@@ -11,13 +11,11 @@ const Signin = () => {
         >
           <div>
             <div className="absolute top-0 left-0 w-full h-full bg-sky-600 opacity-80">
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center z-20">
-                  <h1 className="z-10 text-5xl text-white font-bold">
-                    MexL Cinema
-                  </h1>
-                  <p className="z-10 text-2xl text-white font-medium">
-                    The best place to watch movies
+              <div className="flex items-center justify-center h-full w-11/12">
+                <div className="text-center">
+                  <h1 className="text-7xl text-white font-bold">MexL Cinema</h1>
+                  <p className="text-5xl text-white font-thin">
+                    The best place to buy movies tickets
                   </p>
                 </div>
               </div>
@@ -25,35 +23,43 @@ const Signin = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center mx-8 my-8">
-          <div className="gap-7">
-            <div className="text-5xl">Sign In</div>
-            <div className="text-base">
+          <div className="grid gap-7">
+            <div className="text-5xl font-bold">Sign In</div>
+            <div className="font-thin text-gray-700">
               Sign in with your data that you entered during your registration
             </div>
             <form className="flex flex-col items-center w-full gap-4">
               <div className="w-full">
-                <label className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="email"
+                  className="block text-md font-medium leading-10"
+                >
                   Email
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
+                  name="email"
+                  className="w-full px-4 py-2 border border-sky-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
                 />
               </div>
               <div className="w-full">
-                <label className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  className="block text-md font-medium leading-10"
+                >
                   Password
                 </label>
                 <input
                   type="password"
+                  name="password"
                   placeholder="Password"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-sky-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
                 />
               </div>
               <button
                 type="submit"
-                className="bg-sky-600 hover:bg-sky-700 py-2 px-4 text-medium text-white w-full"
+                className="bg-sky-600 hover:bg-sky-700 py-2 px-4 text-medium text-white w-full rounded-md font-medium"
               >
                 Sign In
               </button>
@@ -63,7 +69,7 @@ const Signin = () => {
                 Forgot your password?{" "}
                 <Link
                   to="#"
-                  className="decoration-blue-700 underline underline-offset-2"
+                  className="decoration-blue-700 underline underline-offset-2 font-medium text-sky-600"
                 >
                   Reset Now
                 </Link>
@@ -72,7 +78,7 @@ const Signin = () => {
                 Don't have an account?{" "}
                 <Link
                   to="/signup"
-                  className="decoration-blue-700 underline underline-offset-2"
+                  className="decoration-blue-700 underline underline-offset-2 font-medium text-sky-600"
                 >
                   Sign Up
                 </Link>
