@@ -27,12 +27,12 @@ const Navbar = () => {
 							</Link>
 						</nav>
 						<div className="items-center justify-end md:flex md:flex-1 lg:w-0 pr-3">
-							<Link to="/signin" className="whitespace-nowrap text-base font-medium">
+							<Link to="/signin" className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-sky-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-700">
 								Sign in
 							</Link>
 							<Link
 								to="#"
-								className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-sky-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-700">
+								className="ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-sky-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-700">
 								Sign up
 							</Link>
 						</div>
