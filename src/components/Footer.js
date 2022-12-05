@@ -57,7 +57,7 @@ const Footer = () => {
             <div>
               {/* Our sponsor */}
               <div className="font-bold">Our sponsor</div>
-              <div className="text-medium">
+              <div className="text-medium grid gap-2">
                 {sponsor.map((item) => (
                   <ul key={item.id}>
                     <li>

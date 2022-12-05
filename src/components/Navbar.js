@@ -7,6 +7,7 @@ const Navbar = () => {
       <nav className="relative bg-white">
         <div className="px-32">
           <div className="flex items-center justify-between py-6">
+            {/* Logo */}
             <div className="flex justify-start pl-3">
               <Link to="/">
                 <span className="sr-only">MexL Cinema</span>
@@ -18,6 +19,7 @@ const Navbar = () => {
                 />
               </Link>
             </div>
+            {/* Menu */}
             <nav className="space-x-10 md:flex pl-6">
               <Link to="/" className="text-base font-medium">
                 Homepage
@@ -27,6 +29,7 @@ const Navbar = () => {
               </Link>
             </nav>
             <div className="items-center justify-end md:flex md:flex-1 lg:w-0 pr-3">
+              {/* Button */}
               <Link
                 to="/signin"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-sky-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-700"
