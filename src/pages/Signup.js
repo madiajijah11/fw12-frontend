@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Signin = () => {
+const Signup = () => {
   return (
     <>
       <div className="grid grid-cols-2 h-screen">
@@ -20,11 +20,53 @@ const Signin = () => {
         </div>
         <div className="flex flex-col items-center justify-center mx-8 my-8">
           <div className="w-2/3 grid gap-7">
-            <div className="text-5xl font-bold">Sign In</div>
+            <div className="text-5xl font-bold">Sign Up</div>
             <div className="font-thin text-gray-700">
-              Sign in with your data that you entered during your registration
+              Fill your additional details
             </div>
             <form className="flex flex-col items-center w-full gap-4">
+              <div className="w-full">
+                <label
+                  htmlFor="firstName"
+                  className="block text-md font-medium leading-10"
+                >
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Write your first name"
+                  name="firstName"
+                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                />
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="lastName"
+                  className="block text-md font-medium leading-10"
+                >
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Write your last name"
+                  name="lastName"
+                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                />
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="phoneNumber"
+                  className="block text-md font-medium leading-10"
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  placeholder="Write your phone number"
+                  name="phoneNumber"
+                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                />
+              </div>
               <div className="w-full">
                 <label
                   htmlFor="email"
@@ -49,7 +91,7 @@ const Signin = () => {
                 <input
                   type="password"
                   name="password"
-                  placeholder="Write your password"
+                  placeholder="Password"
                   className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
                 />
               </div>
@@ -57,26 +99,17 @@ const Signin = () => {
                 type="submit"
                 className="bg-[#FB2576] hover:bg-[#3F0071] py-2 px-4 text-medium text-white w-full rounded-md font-medium"
               >
-                Sign In
+                Sign Up
               </button>
             </form>
             <div className="text-center">
               <div>
-                Forgot your password?{" "}
+                Already have account?{" "}
                 <Link
-                  to="/forgot-password"
+                  to="/signin"
                   className="decoration-[#FB2576] underline underline-offset-2 font-medium text-[#FB2576]"
                 >
-                  Reset Now
-                </Link>
-              </div>
-              <div>
-                Don't have an account?{" "}
-                <Link
-                  to="/signup"
-                  className="decoration-[#FB2576] underline underline-offset-2 font-medium text-[#FB2576]"
-                >
-                  Sign Up
+                  Sign In
                 </Link>
               </div>
             </div>
@@ -87,4 +120,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;
