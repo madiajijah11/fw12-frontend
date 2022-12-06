@@ -33,6 +33,21 @@ const MovieUpComing = [
   },
 ];
 
+const month = [
+  "September",
+  "October",
+  "November",
+  "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+];
+
 const ThirdHomeSection = () => {
   return (
     <>
@@ -40,14 +55,25 @@ const ThirdHomeSection = () => {
         {/* Movie Up Coming */}
         <div className="container mx-auto">
           <div className="flex flex-row justify-between items-center">
-            <div className="text-2xl font-semibold">Movie Up Coming</div>
+            <div className="text-2xl font-semibold">Up Coming</div>
             <div className="text-medium font-semibold">
               <Link to="#">View All</Link>
             </div>
           </div>
-          <div className="flex gap-8 mt-8 px-8">
+          {/* Show Month */}
+          <div className="flex flex-row gap-5 mt-10 overflow-x-auto">
+            {month.map((item, index) => (
+              <button
+                key={`month-${index}`}
+                className="border-2 w-[100px] border-sky-500 rounded-md flex justify-center items-center p-2 hover:bg-sky-500 text-sky-500 hover:text-white font-bold hover:shadow-lg"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-8 mt-8 px-8 overflow-x-auto">
             {MovieUpComing.map((item) => (
-              <div className="relative">
+              <div className="relative" key={item.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-sky-400 text-center hover:bg-white w-full h-full">
                   <img src={item.picture} alt={item.title} title={item.title} />
                   <div className="flex flex-col gap-2 h-full justify-end">

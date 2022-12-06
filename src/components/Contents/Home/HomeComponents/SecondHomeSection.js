@@ -40,14 +40,14 @@ const SecondHomeSection = () => {
         {/* Movie now showing */}
         <div className="container mx-auto">
           <div className="flex flex-row justify-between items-center">
-            <div className="text-2xl font-semibold">Movie Now Showing</div>
+            <div className="text-2xl font-semibold">Now Showing</div>
             <div className="text-medium font-semibold">
               <Link to="#">View All</Link>
             </div>
           </div>
-          <div className="flex gap-8 mt-8 px-8">
+          <div className="flex gap-8 mt-8 px-8 overflow-x-auto">
             {NowShowingMovies.map((item) => (
-              <div className="relative group">
+              <div className="relative group" key={item.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-sky-400 text-center hover:bg-white">
                   <img src={item.picture} alt={item.title} title={item.title} />
                   <div className="top-2/4 hidden group-hover:flex flex-col gap-2">
