@@ -67,10 +67,10 @@ const SecondHomeSection = () => {
               <div className="relative group" key={item.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white hover:border-[#3F0071]">
                   <img
+                    className="w-40 h-60 rounded-md"
                     src={imgPath + item.picture}
                     alt={item.title}
                     title={item.title}
-                    className="w-40 h-60"
                   />
                   <div className="top-2/4 hidden group-hover:flex flex-col gap-2">
                     <div className="text-2x1 font-semibold w-[130px] mt-2">

@@ -91,7 +91,7 @@ const ThirdHomeSection = () => {
               <div className="relative" key={item.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white w-full h-full">
                   <img
-                    className="w-40 h-60"
+                    className="w-40 h-60 rounded-md"
                     src={imgPath + item.picture}
                     alt={item.title}
                     title={item.title}
