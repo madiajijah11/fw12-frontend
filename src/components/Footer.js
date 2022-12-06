@@ -23,7 +23,7 @@ const sponsor = [
 const Footer = () => {
   return (
     <>
-      <footer className="px-32">
+      <footer className="pt-32 px-32">
         <div className="flex flex-row gap-8">
           <div className="w-1/3">
             <figure>
@@ -61,13 +61,13 @@ const Footer = () => {
                 {sponsor.map((item) => (
                   <ul key={item.id}>
                     <li>
-                      <Link to="#">
+                      <a href="#">
                         <img
                           src={item.logo}
                           alt={item.name}
                           title={item.name}
                         />
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                 ))}
@@ -79,19 +79,31 @@ const Footer = () => {
               <div className="text-medium">
                 <ul>
                   <li>
-                    <Link to="#">
+                    <a
+                      href="https://www.instagram.com/dian.rhmdni"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Icon icon="ph:instagram-logo" /> Instagram
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link to="#">
+                    <a
+                      href="https://www.facebook.com/nyanyaw.meong"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Icon icon="ri:facebook-box-fill" /> Facebook
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link to="#">
+                    <a
+                      href="https://www.twitter.com/Rappwalk"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Icon icon="ant-design:twitter-square-filled" /> Twitter
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>

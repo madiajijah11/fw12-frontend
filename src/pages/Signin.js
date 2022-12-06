@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
-import Background from "../assets/images/background.png";
 
 const Signin = () => {
   return (
     <>
       <div className="grid grid-cols-2 h-screen">
-        <div
-          className="bg-cover bg-center bg-no-repeat w-full h-full relative"
-          style={{ backgroundImage: `url(${Background})` }}
-        >
+        <div className="bg-[url('../images/background.png')] bg-cover bg-center bg-no-repeat w-full h-full relative">
           <div>
             <div className="absolute top-0 left-0 w-full h-full bg-sky-600 opacity-80">
               <div className="flex items-center justify-center h-full w-11/12">

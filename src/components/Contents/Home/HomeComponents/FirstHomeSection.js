@@ -12,8 +12,8 @@ const FirstHomeSection = () => {
             Watch your favorite movie with your family and friends
           </div>
         </div>
-        <div className="w-1/2">
-          <img src={Banner} alt="banner" title="Banner" />
+        <div className="w-1/2 flex justify-center">
+          <img src={Banner} alt="Banner" title="Banner" />
         </div>
       </div>
     </>
