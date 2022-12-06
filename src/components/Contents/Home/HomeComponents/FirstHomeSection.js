@@ -5,7 +5,7 @@ const FirstHomeSection = () => {
     <>
       <div className="flex flex-row justify-between items-center">
         <div className="w-1/2 text-center">
-          <div className="text-5xl font-semibold leading-relaxed text-sky-300">
+          <div className="text-5xl font-semibold leading-relaxed text-[#FB2576]">
             Find your favorite movie
           </div>
           <div className="text-2xl font-extralight">

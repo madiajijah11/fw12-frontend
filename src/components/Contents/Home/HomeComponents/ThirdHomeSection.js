@@ -65,7 +65,7 @@ const ThirdHomeSection = () => {
             {month.map((item, index) => (
               <button
                 key={`month-${index}`}
-                className="border-2 w-[100px] border-sky-500 rounded-md flex justify-center items-center p-2 hover:bg-sky-500 text-sky-500 hover:text-white font-bold hover:shadow-lg"
+                className="border-2 w-[100px] border-[#FB2576] rounded-md flex justify-center items-center p-2 hover:bg-[#FB2576] text-[#FB2576] hover:text-white font-bold hover:shadow-lg"
               >
                 {item}
               </button>
@@ -74,7 +74,7 @@ const ThirdHomeSection = () => {
           <div className="flex gap-8 mt-8 px-8 overflow-x-auto">
             {MovieUpComing.map((item) => (
               <div className="relative" key={item.id}>
-                <div className="flex flex-col p-8 border-2 items-center rounded-lg border-sky-400 text-center hover:bg-white w-full h-full">
+                <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white w-full h-full">
                   <img src={item.picture} alt={item.title} title={item.title} />
                   <div className="flex flex-col gap-2 h-full justify-end">
                     <div className="text-2x1 font-semibold w-[130px] mt-2">
@@ -83,7 +83,7 @@ const ThirdHomeSection = () => {
                     <div className="flex flex-row">
                       <div className="text-sm w-[130px]">{item.genre}</div>
                     </div>
-                    <button className="bg-sky-600 hover:bg-sky-700 py-2 px-4 text-medium text-white rounded-md font-medium w-[130px]">
+                    <button className="bg-[#FB2576] hover:bg-[#3F0071] py-2 px-4 text-medium text-white rounded-md font-medium w-[130px]">
                       Details
                     </button>
                   </div>

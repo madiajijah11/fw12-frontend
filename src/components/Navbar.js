@@ -32,13 +32,13 @@ const Navbar = () => {
               {/* Button */}
               <Link
                 to="/signin"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-sky-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-700"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FB2576] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#3F0071]"
               >
                 Sign in
               </Link>
               <Link
                 to="#"
-                className="ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-sky-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-700"
+                className="ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FB2576] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#3F0071]"
               >
                 Sign up
               </Link>
