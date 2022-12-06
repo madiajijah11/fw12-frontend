@@ -1,37 +1,39 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const MovieUpComing = [
-  {
-    id: 1,
-    title: "Black Widow",
-    picture: require("../../../../assets/images/Rectangle-139.png"),
-    genre: "Action, Adventure, Sci-Fi",
-  },
-  {
-    id: 2,
-    title: "The Witches",
-    picture: require("../../../../assets/images/Rectangle-139-1.png"),
-    genre: "Adventure, Comedy, Family",
-  },
-  {
-    id: 3,
-    title: "Tenet",
-    picture: require("../../../../assets/images/Rectangle-139-2.png"),
-    genre: "Action, Sci-Fi, Thriller",
-  },
-  {
-    id: 4,
-    title: "Black Widow",
-    picture: require("../../../../assets/images/Rectangle-139.png"),
-    genre: "Action, Adventure, Sci-Fi",
-  },
-  {
-    id: 5,
-    title: "The Witches",
-    picture: require("../../../../assets/images/Rectangle-139-1.png"),
-    genre: "Adventure, Comedy, Family",
-  },
-];
+// const MovieUpComing = [
+//   {
+//     id: 1,
+//     title: "Black Widow",
+//     picture: require("../../../../assets/images/Rectangle-139.png"),
+//     genre: "Action, Adventure, Sci-Fi",
+//   },
+//   {
+//     id: 2,
+//     title: "The Witches",
+//     picture: require("../../../../assets/images/Rectangle-139-1.png"),
+//     genre: "Adventure, Comedy, Family",
+//   },
+//   {
+//     id: 3,
+//     title: "Tenet",
+//     picture: require("../../../../assets/images/Rectangle-139-2.png"),
+//     genre: "Action, Sci-Fi, Thriller",
+//   },
+//   {
+//     id: 4,
+//     title: "Black Widow",
+//     picture: require("../../../../assets/images/Rectangle-139.png"),
+//     genre: "Action, Adventure, Sci-Fi",
+//   },
+//   {
+//     id: 5,
+//     title: "The Witches",
+//     picture: require("../../../../assets/images/Rectangle-139-1.png"),
+//     genre: "Adventure, Comedy, Family",
+//   },
+// ];
 
 const month = [
   "September",
@@ -49,6 +51,19 @@ const month = [
 ];
 
 const ThirdHomeSection = () => {
+  const [movies, setMovies] = useState([]);
+  // const [loading, setLoading] = useState(true);
+
+  const imgPath = "http://localhost:3000/assets/uploads/";
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const response = await axios.get("http://localhost:3000/movies/upcoming");
+      setMovies(response.data.data);
+    };
+    fetchMovies();
+  }, []);
+
   return (
     <>
       <div className="px-20 pt-20">
@@ -72,10 +87,15 @@ const ThirdHomeSection = () => {
             ))}
           </div>
           <div className="flex gap-8 mt-8 px-8 overflow-x-auto">
-            {MovieUpComing.map((item) => (
+            {movies.map((item) => (
               <div className="relative" key={item.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white w-full h-full">
-                  <img src={item.picture} alt={item.title} title={item.title} />
+                  <img
+                    className="w-40 h-60"
+                    src={imgPath + item.picture}
+                    alt={item.title}
+                    title={item.title}
+                  />
                   <div className="flex flex-col gap-2 h-full justify-end">
                     <div className="text-2x1 font-semibold w-[130px] mt-2">
                       {item.title}
