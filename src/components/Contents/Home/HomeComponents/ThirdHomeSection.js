@@ -78,7 +78,7 @@ const ThirdHomeSection = () => {
 
   return (
     <>
-      <div className="px-20 pt-20">
+      <div className="px-10 md:px-20 pt-20">
         {/* Movie Up Coming */}
         <div className="container mx-auto">
           <div className="flex flex-row justify-between items-center">
@@ -101,7 +101,7 @@ const ThirdHomeSection = () => {
           <div className="flex gap-8 mt-8 px-8 overflow-x-auto place-content-between">
             {isLoading && <LoadingIndicator />}
             {movies.map((movie) => (
-              <div className="relative" key={movie.id}>
+              <div className="relative flex-shrink-0" key={movie.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white w-full h-full">
                   <img
                     className="w-40 h-60 rounded-md"

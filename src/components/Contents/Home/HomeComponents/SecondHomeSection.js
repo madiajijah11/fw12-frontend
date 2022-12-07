@@ -62,7 +62,7 @@ const SecondHomeSection = () => {
 
   return (
     <>
-      <div className="bg-gray-100 h-[550px] px-20 py-20">
+      <div className="bg-gray-100 h-[550px] px-10 md:px-20 py-20">
         {/* Movie now showing */}
         <div className="container mx-auto">
           <div className="flex flex-row justify-between items-center">
@@ -76,14 +76,16 @@ const SecondHomeSection = () => {
           <div className="flex gap-8 mt-8 px-8 overflow-x-auto place-content-between">
             {isLoading && <LoadingIndicator />}
             {movies.map((movie) => (
-              <div className="relative group" key={movie.id}>
-                <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white hover:border-[#3F0071]">
+              <div className="relative group flex-shrink-0" key={movie.id}>
+                <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white hover:border-[#3F0071] w-full">
+                  <div>
                   <img
                     className="w-40 h-60 rounded-md"
                     src={imgURL + movie.picture}
                     alt={movie.title}
                     title={movie.title}
-                  />
+                    />
+                    </div>
                   <div className="top-2/4 hidden group-hover:flex flex-col gap-2">
                     <div className="text-2x1 font-semibold w-[130px] mt-2">
                       {movie.title}

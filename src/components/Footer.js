@@ -23,23 +23,23 @@ const sponsor = [
 const Footer = () => {
   return (
     <>
-      <footer className="pt-24 px-32">
-        <div className="flex flex-row gap-8">
-          <div className="w-1/3">
-            <figure>
-              <img
-                className="w-auto h-auto"
-                src={Logo}
-                alt="Logo"
-                title="MexL Cinema"
-              />
-            </figure>
-            <div className="text-medium">
-              Still waiting in line for tickets? <br />
-              MexL Cinema is here to help you!
+      <footer className="pt-24 px-8 sm:px-16 md:px-32 flex flex-col">
+        <div className="flex flex-col sm:flex-row gap-8 place-content-center">
+          <div className="grid grid-flow-row gap-10 sm:gap-0 sm:grid-cols-4 w-full">
+            <div className="">
+              <figure>
+                <img
+                  className="w-auto h-auto"
+                  src={Logo}
+                  alt="Logo"
+                  title="MexL Cinema"
+                />
+              </figure>
+              <div className="text-medium w-full">
+                Still waiting in line for tickets? <br />
+                MexL Cinema is here to help you!
+              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-3 w-full">
             <div>
               {/* Explore */}
               <div className="font-bold">Explore</div>

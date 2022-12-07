@@ -5,10 +5,10 @@ const Navbar = () => {
   return (
     <>
       <nav className="relative bg-white">
-        <div className="px-32">
+        <div className="lg:px-32 md:px-16 sm:px-8">
           <div className="flex items-center justify-between py-6">
             {/* Logo */}
-            <div className="flex justify-start pl-3">
+            <div className="hidden sm:flex justify-start pl-3">
               <Link to="/">
                 <span className="sr-only">MexL Cinema</span>
                 <img
