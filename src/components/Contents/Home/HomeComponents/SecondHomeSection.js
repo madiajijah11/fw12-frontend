@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import LoadingIndicator from "../../../LoadingIndicator";
 
 // const NowShowingMovies = [
 //   {
@@ -37,15 +38,24 @@ import { useEffect, useState } from "react";
 
 const SecondHomeSection = () => {
   const [movies, setMovies] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const imgPath = "http://localhost:3000/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+
+  const fetchMovies = async () => {
+    const response = await axios.get(
+      process.env.REACT_APP_API_URL + "/movies/nowshowing?sortBy=endDate"
+    );
+    if (response.data.data) {
+      setMovies(response.data.data);
+      setIsLoading(false);
+    } else {
+      setMovies([]);
+      setIsLoading(true);
+    }
+  };
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await axios.get("http://localhost:3000/movies/upcoming");
-      setMovies(response.data.data);
-    };
     fetchMovies();
   }, []);
 
@@ -59,16 +69,17 @@ const SecondHomeSection = () => {
               Now Showing
             </div>
             <div className="text-medium font-semibold text-[#FB2576]">
-              <Link to="#">View All</Link>
+              <Link to="/list-movie">View All</Link>
             </div>
           </div>
-          <div className="flex gap-8 mt-8 px-8 overflow-x-auto">
+          <div className="flex gap-8 mt-8 px-8 overflow-x-auto place-content-between">
+            {isLoading && <LoadingIndicator />}
             {movies.map((item) => (
               <div className="relative group" key={item.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white hover:border-[#3F0071]">
                   <img
                     className="w-40 h-60 rounded-md"
-                    src={imgPath + item.picture}
+                    src={imgURL + item.picture}
                     alt={item.title}
                     title={item.title}
                   />

@@ -24,7 +24,7 @@ const Navbar = () => {
               <Link to="/" className="text-base font-medium">
                 Homepage
               </Link>
-              <Link to="#" className="text-base font-medium">
+              <Link to="/list-movie" className="text-base font-medium">
                 Movie List
               </Link>
             </nav>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import LoadingIndicator from "../../../LoadingIndicator";
 
 // const MovieUpComing = [
 //   {
@@ -52,15 +53,25 @@ const month = [
 
 const ThirdHomeSection = () => {
   const [movies, setMovies] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const imgPath = "http://localhost:3000/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+
+  const fetchMovies = async () => {
+    const response = await axios.get(
+      process.env.REACT_APP_API_URL +
+        "/movies/upcoming?sortBy=releaseDate&sort=DESC"
+    );
+    if (response.data.data) {
+      setMovies(response.data.data);
+      setIsLoading(false);
+    } else {
+      setMovies([]);
+      setIsLoading(true);
+    }
+  };
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await axios.get("http://localhost:3000/movies/upcoming");
-      setMovies(response.data.data);
-    };
     fetchMovies();
   }, []);
 
@@ -72,27 +83,28 @@ const ThirdHomeSection = () => {
           <div className="flex flex-row justify-between items-center">
             <div className="text-2xl font-semibold">Up Coming</div>
             <div className="text-medium font-semibold">
-              <Link to="#">View All</Link>
+              <Link to="/list-movie">View All</Link>
             </div>
           </div>
           {/* Show Month */}
-          <div className="flex flex-row gap-5 mt-10 overflow-x-auto">
+          <div className="flex flex-row mt-10 overflow-x-auto place-content-between mb-10">
             {month.map((item, index) => (
               <button
                 key={`month-${index}`}
-                className="border-2 w-[100px] border-[#FB2576] rounded-md flex justify-center items-center p-2 hover:bg-[#FB2576] text-[#FB2576] hover:text-white font-bold hover:shadow-lg"
+                className="border-2 w-[100px] border-[#FB2576] rounded-md flex justify-center items-center p-2 my-5 mx-5 hover:bg-[#FB2576] text-[#FB2576] hover:text-white font-bold hover:shadow-md hover:shadow-[#3F0071]"
               >
                 {item}
               </button>
             ))}
           </div>
-          <div className="flex gap-8 mt-8 px-8 overflow-x-auto">
+          <div className="flex gap-8 mt-8 px-8 overflow-x-auto place-content-between">
+            {isLoading && <LoadingIndicator />}
             {movies.map((item) => (
               <div className="relative" key={item.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white w-full h-full">
                   <img
                     className="w-40 h-60 rounded-md"
-                    src={imgPath + item.picture}
+                    src={imgURL + item.picture}
                     alt={item.title}
                     title={item.title}
                   />

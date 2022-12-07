@@ -6,7 +6,7 @@ const ForgotPassword = () => {
           <div>
             <div className="absolute top-0 left-0 w-full h-full bg-[#FB2576] opacity-80">
               <div className="flex flex-col content-center w-full h-full flex-wrap justify-center gap-6">
-                <div className="font-bold text-5xl text-white">MexL Cinema</div>
+                <div className="font-bold text-5xl text-white mb-16">MexL Cinema</div>
                 <div className="text-5xl font-bold text-white">
                   Lets reset your password
                 </div>
@@ -15,30 +15,33 @@ const ForgotPassword = () => {
                   following steps.
                 </div>
                 <div>
-                  <div className="flex flex-row items-center mb-10">
-                    <div className="border-2 border-black after:content-['|'] after:text-white after:absolute after:top-full relative rounded-full w-10 h-10 flex justify-center mr-5 items-center font-bold bg-white">
+                  <div className="flex flex-row items-center mb-8">
+                    <div className="border-2 border-white relative rounded-full w-10 h-10 flex justify-center mr-5 items-center font-bold bg-white">
                       1
+                      <div className="border-l-2 h-full absolute -bottom-full"></div>
                     </div>
                     <div className="font-bold text-white">
                       Fill your complete email
                     </div>
                   </div>
-                  <div className="flex flex-row items-center mb-10">
-                    <div className="border-2 border-black after:content-['|'] after:absolute after:top-full relative rounded-full w-10 h-10 flex justify-center mr-5 items-center text-white font-bold">
+                  <div className="flex flex-row items-center mb-8">
+                    <div className="border-2 border-white relative rounded-full w-10 h-10 flex justify-center mr-5 items-center text-white font-bold">
                       2
+                      <div className="border-l-2 h-full absolute -bottom-full"></div>
                     </div>
                     <div className="font-bold text-white">Check your email</div>
                   </div>
-                  <div className="flex flex-row items-center mb-10">
-                    <div className="border-2 border-black after:content-['|'] after:absolute after:top-full relative rounded-full w-10 h-10 flex justify-center mr-5 items-center text-white font-bold">
+                  <div className="flex flex-row items-center mb-8">
+                    <div className="border-2 border-white relative rounded-full w-10 h-10 flex justify-center mr-5 items-center text-white font-bold">
                       3
+                      <div className="border-l-2 h-full absolute -bottom-full"></div>
                     </div>
                     <div className="font-bold text-white">
                       Enter your new password
                     </div>
                   </div>
-                  <div className="flex flex-row items-center mb-10">
-                    <div className="border-2 border-black relative rounded-full w-10 h-10 flex justify-center mr-5 items-center text-white font-bold">
+                  <div className="flex flex-row items-center mb-8">
+                    <div className="border-2 border-white relative rounded-full w-10 h-10 flex justify-center mr-5 items-center text-white font-bold">
                       4
                     </div>
                     <div className="font-bold text-white">Done</div>
