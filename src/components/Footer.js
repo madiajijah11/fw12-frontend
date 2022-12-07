@@ -23,7 +23,7 @@ const sponsor = [
 const Footer = () => {
   return (
     <>
-      <footer className="pt-32 px-32">
+      <footer className="pt-24 px-32">
         <div className="flex flex-row gap-8">
           <div className="w-1/3">
             <figure>

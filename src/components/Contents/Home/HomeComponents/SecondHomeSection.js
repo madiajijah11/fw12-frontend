@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import LoadingIndicator from "../../../LoadingIndicator";
@@ -40,6 +40,7 @@ const SecondHomeSection = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const navigate = useNavigate();
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
   const fetchMovies = async () => {
@@ -74,23 +75,31 @@ const SecondHomeSection = () => {
           </div>
           <div className="flex gap-8 mt-8 px-8 overflow-x-auto place-content-between">
             {isLoading && <LoadingIndicator />}
-            {movies.map((item) => (
-              <div className="relative group" key={item.id}>
+            {movies.map((movie) => (
+              <div className="relative group" key={movie.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white hover:border-[#3F0071]">
                   <img
                     className="w-40 h-60 rounded-md"
-                    src={imgURL + item.picture}
-                    alt={item.title}
-                    title={item.title}
+                    src={imgURL + movie.picture}
+                    alt={movie.title}
+                    title={movie.title}
                   />
                   <div className="top-2/4 hidden group-hover:flex flex-col gap-2">
                     <div className="text-2x1 font-semibold w-[130px] mt-2">
-                      {item.title}
+                      {movie.title}
                     </div>
                     <div className="flex flex-row">
-                      <div className="text-sm w-[130px]">{item.genre}</div>
+                      <div className="text-sm w-[130px]">{movie.genre}</div>
                     </div>
-                    <button className="bg-[#3F0071] hover:bg-[#FB2576] py-2 px-4 text-medium text-white rounded-md font-medium w-[130px]">
+                    {/* button navigate */}
+                    <button
+                      onClick={() =>
+                        navigate(`/movie-details/${movie.id}`, {
+                          state: movie,
+                        })
+                      }
+                      className="bg-[#3F0071] hover:bg-[#FB2576] py-2 px-4 text-medium text-white rounded-md font-medium w-[130px]"
+                    >
                       Details
                     </button>
                   </div>
