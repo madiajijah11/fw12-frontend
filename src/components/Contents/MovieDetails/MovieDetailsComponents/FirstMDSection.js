@@ -8,6 +8,8 @@ const FirstMovieDetailsSection = ({ movie }) => {
   const hour = time[0].replace(/^0+/, "");
   const minute = time[1].replace(/^0+/, "");
 
+  console.log(minute);
+
   const date = new Date(releaseDate).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
@@ -42,7 +44,11 @@ const FirstMovieDetailsSection = ({ movie }) => {
                 <div className="font-normal text-sm text-gray-400">
                   Duration
                 </div>
-                <div>{`${hour} hours ${minute} minutes`}</div>
+                <div>
+                  {minute === ""
+                    ? `${hour} hour`
+                    : `${hour} hour ${minute} minute`}
+                </div>
               </div>
             </div>
             <div className="grid grid-rows-2 gap-5">
