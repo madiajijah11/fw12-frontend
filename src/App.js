@@ -9,6 +9,7 @@ import ListMovies from "./pages/ListMovie";
 import NotFoundPage from "./pages/404";
 import MovieDetails from "./pages/MovieDetails";
 import OrderPage from "./pages/OrderPage";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/list-movie" element={<ListMovies />} />
       <Route path="/movie-details/:id" element={<MovieDetails />} />
       <Route path="/order-page" element={<OrderPage />} />
+      <Route path="/payment-page" element={<PaymentPage />} />
     </Routes>
   );
 }
