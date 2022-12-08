@@ -8,6 +8,7 @@ import ResetPassword from "./pages/ResetPassword";
 import ListMovies from "./pages/ListMovie";
 import NotFoundPage from "./pages/404";
 import MovieDetails from "./pages/MovieDetails";
+import OrderPage from "./pages/OrderPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/list-movie" element={<ListMovies />} />
       <Route path="/movie-details/:id" element={<MovieDetails />} />
+      <Route path="/order-page" element={<OrderPage />} />
     </Routes>
   );
 }

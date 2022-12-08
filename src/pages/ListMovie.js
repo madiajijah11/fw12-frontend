@@ -1,4 +1,4 @@
-import MovieList from "../components/Contents/MovieList/MovieList";
+import MovieList from "../components/Contents/ListMovie/MovieList";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
