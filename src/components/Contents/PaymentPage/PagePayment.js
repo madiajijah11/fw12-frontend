@@ -150,7 +150,7 @@ const PagePayment = () => {
                 <label for="PhoneNumber">Phone Number</label>
                 <div className="flex border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent">
                   <input
-                    className="rounded-md rounded-r-none border-r-[#FB2576] px-4 border-r py-2 w-1/4"
+                    className="rounded-md rounded-r-none border-r-[#FB2576] px-4 border-r py-2 w-16"
                     type="text"
                     placeholder="+62"
                   />
