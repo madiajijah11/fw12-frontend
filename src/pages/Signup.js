@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Signup = () => {
   return (
     <>
-      <div className="grid sm:grid-cols-2 h-screen">
+      <div className="grid sm:grid-cols-[2fr,1.3fr] h-screen">
         <div className="hidden sm:block bg-[url('../images/background.png')] bg-cover bg-center bg-no-repeat w-full h-full relative">
           <div>
             <div className="absolute top-0 left-0 w-full h-full bg-[#FB2576] opacity-80">

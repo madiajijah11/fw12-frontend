@@ -5,13 +5,14 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
-import ListMovies from "./pages/ListMovie";
+import ListMoviesPage from "./pages/ListMoviePage";
 import NotFoundPage from "./pages/404";
-import MovieDetails from "./pages/MovieDetails";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
 import OrderPage from "./pages/OrderPage";
 import PaymentPage from "./pages/PaymentPage";
 import ProfilePage from "./pages/ProfilePage";
-import OrderHistory from "./pages/OrderHistory";
+import OrderHistoryPage from "./pages/OrderHistoryPage";
+import TicketPage from "./pages/TicketPage";
 
 function App() {
   return (
@@ -22,12 +23,13 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/list-movie" element={<ListMovies />} />
-      <Route path="/movie-details/:id" element={<MovieDetails />} />
+      <Route path="/list-movie" element={<ListMoviesPage />} />
+      <Route path="/movie-details/:id" element={<MovieDetailsPage />} />
       <Route path="/order-page" element={<OrderPage />} />
       <Route path="/payment-page" element={<PaymentPage />} />
       <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/order-history" element={<OrderHistory />} />
+      <Route path="/order-history" element={<OrderHistoryPage />} />
+      <Route path="/ticket" element={<TicketPage />} />
     </Routes>
   );
 }

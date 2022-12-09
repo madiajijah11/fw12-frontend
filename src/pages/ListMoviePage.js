@@ -2,7 +2,7 @@ import MovieList from "../components/Contents/ListMovie/MovieList";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const ListMovies = () => {
+const ListMoviesPage = () => {
   return (
     <>
       <div>
@@ -14,4 +14,4 @@ const ListMovies = () => {
   );
 };
 
-export default ListMovies;
+export default ListMoviesPage;

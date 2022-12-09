@@ -1,6 +1,11 @@
-https://colorhunt.co/palette/0000001500503f0071fb2576
+https://colorhunt.co/palette/fa86bea275e39aebedfffcab
 
 000000 forty
 150050 third
 3F0071 second
 FB2576 primary
+
+FA86BE primary
+A275E3 second
+9AEBED third
+FFFCAB forty

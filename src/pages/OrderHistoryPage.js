@@ -2,7 +2,7 @@ import HistoryOrder from "../components/Contents/OrderHistory/HistoryOrder";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-const OrderHistory = () => {
+const OrderHistoryPage = () => {
   return (
     <div>
       <Navbar />
@@ -12,4 +12,4 @@ const OrderHistory = () => {
   );
 };
 
-export default OrderHistory;
+export default OrderHistoryPage;

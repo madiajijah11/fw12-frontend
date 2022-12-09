@@ -1,15 +1,15 @@
-import DetailMovie from "../components/Contents/MovieDetails/DetailMovie";
+import Ticket from "../components/Contents/Ticket/Ticket";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-const MovieDetails = () => {
+const TicketPage = () => {
   return (
     <div>
       <Navbar />
-      <DetailMovie />
+      <Ticket />
       <Footer />
     </div>
   );
 };
 
-export default MovieDetails;
+export default TicketPage;

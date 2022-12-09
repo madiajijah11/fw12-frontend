@@ -1,12 +1,14 @@
 const ResetPassword = () => {
   return (
     <>
-      <div className="grid grid-cols-2 h-screen">
+      <div className="grid sm:grid-cols-[2fr,1.3fr] h-screen">
         <div className="bg-[url('../images/background.png')] bg-cover bg-center bg-no-repeat w-full h-full relative">
           <div>
             <div className="absolute top-0 left-0 w-full h-full bg-[#FB2576] opacity-80">
               <div className="flex flex-col content-center w-full h-full flex-wrap justify-center gap-6">
-                <div className="font-bold text-5xl text-white mb-16">MexL Cinema</div>
+                <div className="font-bold text-5xl text-white mb-16">
+                  MexL Cinema
+                </div>
                 <div className="text-5xl font-bold text-white">
                   Lets reset your password
                 </div>
