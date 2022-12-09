@@ -3,7 +3,7 @@ const LoadingIndicator = () => (
     <button
       disabled
       type="button"
-      className="text-white bg-[#FB2576] hover:bg-[#3F0071] focus:ring-4 focus:ring-[#FB2576] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-[#FB2576] dark:hover:bg-[#3F0071] dark:focus:ring-[#FB2576] inline-flex items-center"
+      className="text-white bg-[#FA86BE] hover:bg-[#A275E3] focus:ring-4 focus:ring-[#FA86BE] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-[#FA86BE] dark:hover:bg-[#A275E3] dark:focus:ring-[#FA86BE] inline-flex items-center"
     >
       <svg
         role="status"

@@ -12,10 +12,10 @@ const PageOrder = () => {
               <div className="font-semibold text-2xl flex-1">
                 Spider-Man: Homecoming
               </div>
-              <div className="border-[#FB2576] border-2 hover:border-[#3F0071] rounded-md ">
+              <div className="border-[#FA86BE] border-2 hover:border-[#A275E3] rounded-md ">
                 <Link
                   to="/movie-list"
-                  className="text-[#FB2576] inline-block align-middle py-2 px-4 font-bold text-sm hover:text-[#3F0071]"
+                  className="text-[#FA86BE] inline-block align-middle py-2 px-4 font-bold text-sm hover:text-[#A275E3]"
                 >
                   Change Movie
                 </Link>
@@ -51,9 +51,9 @@ const PageOrder = () => {
                       <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
                       <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
                       <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-[#FB2576]"></div>
-                      <div className="h-6 w-6 rounded-sm bg-[#FB2576]"></div>
-                      <div className="h-6 w-6 rounded-sm bg-[#FB2576]"></div>
+                      <div className="h-6 w-6 rounded-sm bg-[#FA86BE]"></div>
+                      <div className="h-6 w-6 rounded-sm bg-[#FA86BE]"></div>
+                      <div className="h-6 w-6 rounded-sm bg-[#FA86BE]"></div>
                       <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
                       <div className="h-6 w-6 rounded-sm">D</div>
                       <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
@@ -174,7 +174,7 @@ const PageOrder = () => {
                   </div>
                   <div className="flex gap-2">
                     <div>
-                      <div className="h-6 w-6 rounded-sm bg-[#FB2576]"></div>
+                      <div className="h-6 w-6 rounded-sm bg-[#FA86BE]"></div>
                     </div>
                     <div>Selected</div>
                   </div>
@@ -190,13 +190,13 @@ const PageOrder = () => {
             <div className="flex justify-between">
               <Link
                 to="/movie-list"
-                className="border-[#FB2576] border px-4 py-2 rounded-md text-[#FB2576] hover:bg-[#3F0071] hover:border-[#3F0071] hover:text-white font-bold text-base"
+                className="border-[#FA86BE] border px-4 py-2 rounded-md text-[#FA86BE] hover:bg-[#A275E3] hover:border-[#A275E3] hover:text-white font-bold text-base"
               >
                 Change your movie
               </Link>
               <Link
                 to="#"
-                className="bg-[#3F0071] text-white px-4 py-2 rounded-md hover:bg-transparent hover:border-[#FB2576] hover:border hover:text-[#FB2576] font-bold text-base"
+                className="bg-[#A275E3] text-white px-4 py-2 rounded-md hover:bg-transparent hover:border-[#FA86BE] hover:border hover:text-[#FA86BE] font-bold text-base"
               >
                 Checkout now
               </Link>
@@ -243,7 +243,7 @@ const PageOrder = () => {
             <hr className="w-full border-b-2" />
             <div className="mb-10 flex justify-between w-full">
               <div className="font-semibold text-lg">Total Payment</div>
-              <div className="text-[#FB2576] font-bold text-2xl">$30</div>
+              <div className="text-[#FA86BE] font-bold text-2xl">$30</div>
             </div>
           </div>
         </div>

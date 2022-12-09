@@ -26,7 +26,7 @@ const HistoryOrder = () => {
               <hr />
               <Link
                 to="/"
-                className="rounded-md bg-[#FB2576] text-center px-4 py-2 text-white font-bold"
+                className="rounded-md bg-[#FA86BE] text-center px-4 py-2 text-white font-bold"
               >
                 Logout
               </Link>
@@ -34,11 +34,11 @@ const HistoryOrder = () => {
           </div>
           <div className="w-full flex flex-col gap-10">
             <div className="bg-white rounded-lg px-8 py-4 flex items-center">
-              <Link to="#" className="mr-10 font-normal text-lg">
+              <Link to="/profile" className="mr-10 font-normal text-lg">
                 Account Setting
               </Link>
               <div>
-                <div className="font-normal text-lg  decoration-[#FB2576] underline underline-offset-8 decoration-4">
+                <div className="font-normal text-lg  decoration-[#FA86BE] underline underline-offset-8 decoration-4">
                   Order History
                 </div>
               </div>

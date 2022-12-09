@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import LoadingIndicator from "../../LoadingIndicator";
+import LoadingIndicator from "../../../LoadingIndicator";
 
 const months = [
   "September",
@@ -18,7 +18,7 @@ const months = [
   "August",
 ];
 
-const MovieList = () => {
+const MMSecondSection = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,7 +44,7 @@ const MovieList = () => {
 
   return (
     <>
-      <div className="px-32 py-16 bg-gray-100">
+      <div className="px-32 py-16 bg-gray-100 rounded-b-lg">
         <div className="flex flex-row justify-between items-center">
           <div className="text-2xl font-semibold">List Movie</div>
           <div className="flex flex-row justify-between items-center">
@@ -65,19 +65,7 @@ const MovieList = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div className="flex flex-row mt-10 overflow-x-auto place-content-between mb-10">
-            {months.map((month, index) => (
-              <button
-                key={`month-${index}`}
-                className="border-2 w-[100px] border-[#FA86BE] rounded-md flex justify-center items-center p-2 my-5 mx-5 hover:bg-[#FA86BE] text-[#FA86BE] hover:text-white font-bold hover:shadow-md hover:shadow-[#A275E3]"
-              >
-                {month}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="px-20 py-20 bg-white rounded-md">
+        <div className="px-20 py-16">
           {isLoading && <LoadingIndicator />}
           <div className="grid grid-cols-4 gap-10">
             {movies.map((movie) => (
@@ -102,9 +90,19 @@ const MovieList = () => {
                           state: movie,
                         });
                       }}
-                      className="bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium w-[130px]"
+                      className="border border-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-[#FA86BE] rounded-md font-medium w-[130px]"
                     >
-                      Details
+                      Update
+                    </button>
+                    <button
+                      onClick={() => {
+                        navigate(`/movie-details/${movie.id}`, {
+                          state: movie,
+                        });
+                      }}
+                      className="border border-[#A275E3]  hover:bg-[#FA86BE] py-2 px-4 text-medium text-[#A275E3] rounded-md font-medium w-[130px]"
+                    >
+                      Delete
                     </button>
                   </div>
                 </div>
@@ -132,4 +130,4 @@ const MovieList = () => {
   );
 };
 
-export default MovieList;
+export default MMSecondSection;

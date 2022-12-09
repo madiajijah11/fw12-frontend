@@ -6,7 +6,7 @@ const Signin = () => {
       <div className="grid sm:grid-cols-[2fr,1.3fr] h-screen">
         <div className="hidden sm:block bg-[url('../images/background.png')] bg-cover bg-center bg-no-repeat w-full h-full relative">
           <div>
-            <div className="absolute top-0 left-0 w-full h-full bg-[#FB2576] opacity-80">
+            <div className="absolute top-0 left-0 w-full h-full bg-[#FA86BE] opacity-80">
               <div className="flex items-center justify-center h-full w-11/12">
                 <div className="text-center">
                   <h1 className="text-7xl text-white font-bold">MexL Cinema</h1>
@@ -36,7 +36,7 @@ const Signin = () => {
                   type="email"
                   placeholder="Write your email"
                   name="email"
-                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                 />
               </div>
               <div className="w-full">
@@ -50,12 +50,12 @@ const Signin = () => {
                   type="password"
                   name="password"
                   placeholder="Write your password"
-                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                 />
               </div>
               <button
                 type="submit"
-                className="bg-[#FB2576] hover:bg-[#3F0071] py-2 px-4 text-medium text-white w-full rounded-md font-medium"
+                className="bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white w-full rounded-md font-medium"
               >
                 Sign In
               </button>
@@ -65,7 +65,7 @@ const Signin = () => {
                 Forgot your password?{" "}
                 <Link
                   to="/forgot-password"
-                  className="decoration-[#FB2576] underline underline-offset-2 font-medium text-[#FB2576]"
+                  className="decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]"
                 >
                   Reset Now
                 </Link>
@@ -74,7 +74,7 @@ const Signin = () => {
                 Don't have an account?{" "}
                 <Link
                   to="/signup"
-                  className="decoration-[#FB2576] underline underline-offset-2 font-medium text-[#FB2576]"
+                  className="decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]"
                 >
                   Sign Up
                 </Link>

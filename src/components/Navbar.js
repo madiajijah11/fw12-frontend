@@ -27,18 +27,27 @@ const Navbar = () => {
               <Link to="/list-movie" className="text-base font-medium">
                 Movie List
               </Link>
+              <Link to="/admin/dashboard" className="text-base font-medium">
+                Dashboard
+              </Link>
+              <Link to="/admin/manage-movie" className="text-base font-medium">
+                Manage Movie
+              </Link>
+              <Link to="#" className="text-base font-medium">
+                Manage Schedule
+              </Link>
             </nav>
             <div className="items-center justify-end md:flex md:flex-1 lg:w-0 pr-3">
               {/* Button */}
               <Link
                 to="/signin"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FB2576] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#3F0071]"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
               >
                 Sign in
               </Link>
               <Link
                 to="/signup"
-                className="ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FB2576] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#3F0071]"
+                className="ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
               >
                 Sign up
               </Link>

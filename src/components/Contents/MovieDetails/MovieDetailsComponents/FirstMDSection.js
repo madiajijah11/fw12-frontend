@@ -18,7 +18,7 @@ const FirstMovieDetailsSection = ({ movie }) => {
     <>
       <div className="flex flex-row mb-20">
         <div className="h-full">
-          <div className="p-10 border w-full h-full border-[#FB2576] rounded-xl">
+          <div className="p-10 border w-full h-full border-[#FA86BE] rounded-lg">
             <img
               className="w-[332px] h-[458px] rounded-lg"
               src={imgURL + picture}

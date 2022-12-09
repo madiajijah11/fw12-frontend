@@ -92,7 +92,7 @@ const ThirdHomeSection = () => {
             {months.map((month, index) => (
               <button
                 key={`month-${index}`}
-                className="border-2 w-[100px] border-[#FB2576] rounded-md flex justify-center items-center p-2 my-5 mx-5 hover:bg-[#FB2576] text-[#FB2576] hover:text-white font-bold hover:shadow-md hover:shadow-[#3F0071]"
+                className="border-2 w-[100px] border-[#FA86BE] rounded-md flex justify-center items-center p-2 my-5 mx-5 hover:bg-[#FA86BE] text-[#FA86BE] hover:text-white font-bold hover:shadow-md hover:shadow-[#A275E3]"
               >
                 {month}
               </button>
@@ -102,7 +102,7 @@ const ThirdHomeSection = () => {
             {isLoading && <LoadingIndicator />}
             {movies.map((movie) => (
               <div className="relative flex-shrink-0" key={movie.id}>
-                <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FB2576] text-center hover:bg-white w-full h-full">
+                <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white w-full h-full">
                   <img
                     className="w-40 h-60 rounded-md"
                     src={imgURL + movie.picture}
@@ -122,7 +122,7 @@ const ThirdHomeSection = () => {
                           state: movie,
                         });
                       }}
-                      className="bg-[#FB2576] hover:bg-[#3F0071] py-2 px-4 text-medium text-white rounded-md font-medium w-[130px]"
+                      className="bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium w-[130px]"
                     >
                       Details
                     </button>

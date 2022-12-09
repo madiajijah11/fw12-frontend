@@ -81,7 +81,7 @@ const PagePayment = () => {
                 <div className="grid grid-cols-4 gap-4">
                   {payments.map((payment) => (
                     <div
-                      className="flex justify-center border border-[#FB2576] p-4 rounded-md"
+                      className="flex justify-center border border-[#FA86BE] p-4 rounded-md"
                       key={payment.id}
                     >
                       <img className="h-6" src={payment.logo} alt="payment" />
@@ -102,7 +102,7 @@ const PagePayment = () => {
                     Pay via cash.{" "}
                     <Link
                       to="#"
-                      className="font-normal text-[#FB2576] hover:text-[#3F0071]"
+                      className="font-normal text-[#FA86BE] hover:text-[#A275E3]"
                     >
                       See how it work
                     </Link>
@@ -113,13 +113,13 @@ const PagePayment = () => {
             <div className="flex justify-between">
               <Link
                 to="/movie-list"
-                className="border-[#FB2576] border px-4 py-2 rounded-md text-[#FB2576] hover:bg-[#3F0071] hover:border-[#3F0071] hover:text-white font-bold text-base"
+                className="border-[#FA86BE] border px-4 py-2 rounded-md text-[#FA86BE] hover:bg-[#A275E3] hover:border-[#A275E3] hover:text-white font-bold text-base"
               >
                 Previous step
               </Link>
               <Link
                 to="#"
-                className="bg-[#3F0071] text-white px-4 py-2 rounded-md hover:bg-transparent hover:border-[#FB2576] hover:border hover:text-[#FB2576] font-bold text-base"
+                className="bg-[#A275E3] text-white px-4 py-2 rounded-md hover:bg-transparent hover:border-[#FA86BE] hover:border hover:text-[#FA86BE] font-bold text-base"
               >
                 Pay your order
               </Link>
@@ -133,7 +133,7 @@ const PagePayment = () => {
               <div className="flex flex-col gap-2">
                 <label for="FullName">Full Name</label>
                 <input
-                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                   type="text"
                   placeholder="Jonas El Rodriguez"
                 />
@@ -141,21 +141,21 @@ const PagePayment = () => {
               <div className="flex flex-col gap-2">
                 <label for="Email">Email</label>
                 <input
-                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                   type="email"
                   placeholder="jonasrodri123@gmail.com"
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <label for="PhoneNumber">Phone Number</label>
-                <div className="flex border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent">
+                <div className="flex border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent">
                   <input
-                    className="rounded-md rounded-r-none border-r-[#FB2576] px-4 border-r py-2 w-16"
+                    className="rounded-md rounded-r-none border-r-[#FA86BE] px-4 border-r py-2 w-16"
                     type="text"
                     placeholder="+62"
                   />
                   <input
-                    className="rounded-md rounded-l-none px-4 py-2 border-l-[#FB2576] border-l w-full"
+                    className="rounded-md rounded-l-none px-4 py-2 border-l-[#FA86BE] border-l w-full"
                     type="text"
                     placeholder="81445687121"
                   />

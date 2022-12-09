@@ -4,7 +4,7 @@ const ResetPassword = () => {
       <div className="grid sm:grid-cols-[2fr,1.3fr] h-screen">
         <div className="bg-[url('../images/background.png')] bg-cover bg-center bg-no-repeat w-full h-full relative">
           <div>
-            <div className="absolute top-0 left-0 w-full h-full bg-[#FB2576] opacity-80">
+            <div className="absolute top-0 left-0 w-full h-full bg-[#FA86BE] opacity-80">
               <div className="flex flex-col content-center w-full h-full flex-wrap justify-center gap-6">
                 <div className="font-bold text-5xl text-white mb-16">
                   MexL Cinema
@@ -71,7 +71,7 @@ const ResetPassword = () => {
                   type="password"
                   placeholder="Write your password"
                   name="password"
-                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                 />
               </div>
               <div className="w-full">
@@ -85,12 +85,12 @@ const ResetPassword = () => {
                   type="password"
                   placeholder="Write your confirm password"
                   name="confirmPassword"
-                  className="w-full px-4 py-2 border border-[#FB2576] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3F0071] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                 />
               </div>
               <button
                 type="submit"
-                className="bg-[#FB2576] hover:bg-[#3F0071] py-2 px-4 text-medium text-white w-full rounded-md font-medium"
+                className="bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white w-full rounded-md font-medium"
               >
                 Submit
               </button>

@@ -13,6 +13,8 @@ import PaymentPage from "./pages/PaymentPage";
 import ProfilePage from "./pages/ProfilePage";
 import OrderHistoryPage from "./pages/OrderHistoryPage";
 import TicketPage from "./pages/TicketPage";
+import ManageMoviePage from "./pages/ManageMoviePage";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/order-history" element={<OrderHistoryPage />} />
       <Route path="/ticket" element={<TicketPage />} />
+      <Route path="/admin/manage-movie" element={<ManageMoviePage />} />
+      <Route path="/admin/dashboard" element={<DashboardPage />} />
     </Routes>
   );
 }

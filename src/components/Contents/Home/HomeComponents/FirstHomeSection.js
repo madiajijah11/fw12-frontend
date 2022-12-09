@@ -5,7 +5,7 @@ const FirstHomeSection = () => {
     <>
       <div className="flex flex-col-reverse md:flex-row mb-10 md:mb-0 justify-between items-center">
         <div className="w-1/2 text-center">
-          <div className="text-3xl md:text-5xl font-semibold leading-relaxed text-[#FB2576]">
+          <div className="text-3xl md:text-5xl font-semibold leading-relaxed text-[#FA86BE]">
             Find your favorite movie
           </div>
           <div className="text-2xl font-extralight">

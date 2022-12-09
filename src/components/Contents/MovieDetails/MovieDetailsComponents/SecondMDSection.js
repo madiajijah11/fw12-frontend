@@ -48,7 +48,7 @@ const SecondMovieDetailSection = () => {
               <div className="">Price</div>
               <div className="text-right font-semibold">$10.00/seat</div>
             </div>
-            <div className="w-full bg-[#FB2576] hover:bg-[#3F0071] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
+            <div className="w-full bg-[#FA86BE] hover:bg-[#A275E3] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
               Book Now
             </div>
           </div>
@@ -78,7 +78,7 @@ const SecondMovieDetailSection = () => {
               <div className="">Price</div>
               <div className="text-right font-semibold">$10.00/seat</div>
             </div>
-            <div className="w-full bg-[#FB2576] hover:bg-[#3F0071] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
+            <div className="w-full bg-[#FA86BE] hover:bg-[#A275E3] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
               Book Now
             </div>
           </div>
@@ -108,7 +108,7 @@ const SecondMovieDetailSection = () => {
               <div className="">Price</div>
               <div className="text-right font-semibold">$10.00/seat</div>
             </div>
-            <div className="w-full bg-[#FB2576] hover:bg-[#3F0071] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
+            <div className="w-full bg-[#FA86BE] hover:bg-[#A275E3] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
               Book Now
             </div>
           </div>
@@ -138,7 +138,7 @@ const SecondMovieDetailSection = () => {
               <div className="">Price</div>
               <div className="text-right font-semibold">$10.00/seat</div>
             </div>
-            <div className="w-full bg-[#FB2576] hover:bg-[#3F0071] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
+            <div className="w-full bg-[#FA86BE] hover:bg-[#A275E3] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
               Book Now
             </div>
           </div>
@@ -168,7 +168,7 @@ const SecondMovieDetailSection = () => {
               <div className="">Price</div>
               <div className="text-right font-semibold">$10.00/seat</div>
             </div>
-            <div className="w-full bg-[#FB2576] hover:bg-[#3F0071] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
+            <div className="w-full bg-[#FA86BE] hover:bg-[#A275E3] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
               Book Now
             </div>
           </div>
@@ -198,7 +198,7 @@ const SecondMovieDetailSection = () => {
               <div className="">Price</div>
               <div className="text-right font-semibold">$10.00/seat</div>
             </div>
-            <div className="w-full bg-[#FB2576] hover:bg-[#3F0071] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
+            <div className="w-full bg-[#FA86BE] hover:bg-[#A275E3] text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2">
               Book Now
             </div>
           </div>
