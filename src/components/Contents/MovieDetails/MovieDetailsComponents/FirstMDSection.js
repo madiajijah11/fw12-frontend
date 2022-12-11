@@ -8,6 +8,7 @@ const FirstMovieDetailsSection = ({ movie }) => {
   const hour = time[0].replace(/^0+/, "");
   const minute = time[1].replace(/^0+/, "");
 
+  // convert date to day, month, year
   const date = new Date(releaseDate).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",

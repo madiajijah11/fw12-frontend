@@ -73,8 +73,8 @@ const SecondHomeSection = () => {
               <Link to="/list-movie">View All</Link>
             </div>
           </div>
+          {isLoading && <LoadingIndicator />}
           <div className="flex gap-8 mt-8 px-8 overflow-x-auto place-content-between">
-            {isLoading && <LoadingIndicator />}
             {movies.map((movie) => (
               <div className="relative group flex-shrink-0" key={movie.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white hover:border-[#A275E3] w-full">

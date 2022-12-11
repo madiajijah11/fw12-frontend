@@ -4,7 +4,6 @@ import SecondMovieDetailSection from "./MovieDetailsComponents/SecondMDSection";
 
 const DetailMovie = () => {
   const { state } = useLocation();
-  console.log(state);
   return (
     <>
       <div className="px-32 py-16">

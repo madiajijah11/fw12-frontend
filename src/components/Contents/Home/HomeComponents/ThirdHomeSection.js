@@ -98,8 +98,8 @@ const ThirdHomeSection = () => {
               </button>
             ))}
           </div>
+          {isLoading && <LoadingIndicator />}
           <div className="flex gap-8 mt-8 px-8 overflow-x-auto place-content-between">
-            {isLoading && <LoadingIndicator />}
             {movies.map((movie) => (
               <div className="relative flex-shrink-0" key={movie.id}>
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white w-full h-full">
