@@ -3,21 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import LoadingIndicator from "../../../LoadingIndicator";
 
-const months = [
-  "September",
-  "October",
-  "November",
-  "December",
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-];
-
 const MMSecondSection = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -45,15 +30,12 @@ const MMSecondSection = () => {
   return (
     <>
       <div className="px-32 py-16 bg-gray-100 rounded-b-lg">
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-row justify-between items-center  mb-5">
           <div className="text-2xl font-semibold">List Movie</div>
           <div className="flex flex-row justify-between items-center">
             <div className="mr-5">
               <select className="rounded-md p-2" name="sort" id="sort">
-                <option value="">Title A-Z</option>
-                <option value="">Title Z-A</option>
-                <option value="releaseDate">Release Date ASC</option>
-                <option value="releaseDate">Release Date DESC</option>
+                <option>Sort</option>
               </select>
             </div>
             <div>
@@ -65,7 +47,7 @@ const MMSecondSection = () => {
             </div>
           </div>
         </div>
-        <div className="px-20 py-16">
+        <div className="px-20 py-16 bg-[#9AEBED] rounded-lg">
           {isLoading && <LoadingIndicator />}
           <div className="grid grid-cols-4 gap-10">
             {movies.map((movie) => (

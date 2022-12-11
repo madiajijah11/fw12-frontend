@@ -1,5 +1,5 @@
 const FirstMovieDetailsSection = ({ movie }) => {
-  const { title, picture, genre, releaseDate, duration, director, synopsis } =
+  const { title, picture, genre, releaseDate, duration, director, cast, synopsis } =
     movie;
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
@@ -58,7 +58,7 @@ const FirstMovieDetailsSection = ({ movie }) => {
               </div>
               <div>
                 <div className="font-normal text-sm text-gray-400">Casts</div>
-                <div>Tom Holland, Michael Keaton, Robert Downey Jr., ...</div>
+                <div>{cast}</div>
               </div>
             </div>
           </div>

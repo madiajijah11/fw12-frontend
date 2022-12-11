@@ -50,10 +50,7 @@ const MovieList = () => {
           <div className="flex flex-row justify-between items-center">
             <div className="mr-5">
               <select className="rounded-md p-2" name="sort" id="sort">
-                <option value="">Title A-Z</option>
-                <option value="">Title Z-A</option>
-                <option value="releaseDate">Release Date ASC</option>
-                <option value="releaseDate">Release Date DESC</option>
+                <option>Sort</option>
               </select>
             </div>
             <div>

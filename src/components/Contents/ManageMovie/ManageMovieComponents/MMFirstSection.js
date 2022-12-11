@@ -4,9 +4,9 @@ const MMFirstSection = () => {
   return (
     <>
       <div className="px-32 py-16 bg-gray-100 rounded-t-lg">
-        <div className="flex flex-col ">
-          <div className="text-2xl font-semibold">Form Movie</div>
-          <div className="flex px-20 pt-16 pb-10 w-full h-full gap-8">
+        <div className="text-2xl font-semibold mb-5">Form Movie</div>
+        <div className="flex flex-col px-20 py-16 bg-[#9AEBED] rounded-lg">
+          <div className="flex w-full h-full gap-8 mb-5">
             <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white h-full flex-shrink-0">
               <img
                 className="w-40 h-60 rounded-md"
@@ -28,14 +28,14 @@ const MMFirstSection = () => {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="font-normal text-base" htmlFor="genre">
+                <label className="font-normal text-base" htmlFor="director">
                   Director
                 </label>
                 <input
                   className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                   type="text"
-                  name="genre"
-                  id="genre"
+                  name="director"
+                  id="director"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -99,7 +99,7 @@ const MMFirstSection = () => {
               </div>
             </div>
           </div>
-          <div className="grid px-20 gap-5">
+          <div className="grid gap-5">
             <div className="flex flex-col gap-2">
               <label className="font-normal text-base" htmlFor="synopsis">
                 Synopsis

@@ -33,7 +33,7 @@ const Navbar = () => {
               <Link to="/admin/manage-movie" className="text-base font-medium">
                 Manage Movie
               </Link>
-              <Link to="#" className="text-base font-medium">
+              <Link to="/admin/manage-schedule" className="text-base font-medium">
                 Manage Schedule
               </Link>
             </nav>

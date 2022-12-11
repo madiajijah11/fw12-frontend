@@ -15,6 +15,7 @@ import OrderHistoryPage from "./pages/OrderHistoryPage";
 import TicketPage from "./pages/TicketPage";
 import ManageMoviePage from "./pages/ManageMoviePage";
 import DashboardPage from "./pages/DashboardPage";
+import ManageSchedulePage from "./pages/ManageSchedulePage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <Route path="/ticket" element={<TicketPage />} />
       <Route path="/admin/manage-movie" element={<ManageMoviePage />} />
       <Route path="/admin/dashboard" element={<DashboardPage />} />
+      <Route path="/admin/manage-schedule" element={<ManageSchedulePage />} />
     </Routes>
   );
 }
