@@ -21,26 +21,31 @@ const months = [
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
-  const fetchMovies = async () => {
-    const response = await axios.get(
-      process.env.REACT_APP_API_URL + "/movies?limit=8&page=1"
-    );
-    if (response.data.data) {
-      setMovies(response.data.data);
-      setIsLoading(false);
-    } else {
-      setMovies([]);
-      setIsLoading(true);
-    }
-  };
-
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    const fetchMoviesBySearch = async () => {
+      const response = await axios.get(
+        process.env.REACT_APP_API_URL +
+          `/movies?search=${search}&limit=8&page=1`
+      );
+      if (response.data.data) {
+        setMovies(response.data.data);
+        setIsLoading(false);
+      } else {
+        setMovies([]);
+        setIsLoading(true);
+      }
+    };
+    const timeout = setTimeout(() => {
+      fetchMoviesBySearch();
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [search]);
 
   return (
     <>
@@ -58,6 +63,7 @@ const MovieList = () => {
                 className="rounded-md p-2"
                 type="text"
                 placeholder="Search movie name..."
+                onChange={(e) => setSearch(e.target.value)}
               />
             </div>
           </div>

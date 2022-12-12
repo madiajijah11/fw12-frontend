@@ -1,4 +1,5 @@
 import FirstHomeSection from "./HomeComponents/FirstHomeSection";
+import FourtyHomeSection from "./HomeComponents/FourtyHomeSection";
 import SecondHomeSection from "./HomeComponents/SecondHomeSection";
 import ThirdHomeSection from "./HomeComponents/ThirdHomeSection";
 
@@ -9,6 +10,7 @@ const Home = () => {
         <FirstHomeSection />
         <SecondHomeSection />
         <ThirdHomeSection />
+        <FourtyHomeSection />
       </div>
     </>
   );

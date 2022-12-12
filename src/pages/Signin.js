@@ -1,6 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { login } from "../redux/actions/authAction";
 
 const Signin = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { message } = useSelector((state) => state.auth);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+    dispatch(
+      login({
+        email: email.value,
+        password: password.value,
+        cb: () => navigate("/"),
+      })
+    );
+  };
+
   return (
     <>
       <div className="grid sm:grid-cols-[2fr,1.3fr] h-screen">
@@ -24,7 +43,10 @@ const Signin = () => {
             <div className="font-thin text-gray-700">
               Sign in with your data that you entered during your registration
             </div>
-            <form className="flex flex-col items-center w-full gap-4">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col items-center w-full gap-4"
+            >
               <div className="w-full">
                 <label
                   htmlFor="email"
@@ -60,6 +82,11 @@ const Signin = () => {
                 Sign In
               </button>
             </form>
+            {message && (
+              <div className="text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md">
+                {message}
+              </div>
+            )}
             <div className="text-center">
               <div>
                 Forgot your password?{" "}

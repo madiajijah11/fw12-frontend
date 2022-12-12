@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/mexl_cinema-1-edit.png";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../redux/reducers/authReducer";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
   return (
     <>
       <nav className="relative bg-white">
@@ -33,24 +37,39 @@ const Navbar = () => {
               <Link to="/admin/manage-movie" className="text-base font-medium">
                 Manage Movie
               </Link>
-              <Link to="/admin/manage-schedule" className="text-base font-medium">
+              <Link
+                to="/admin/manage-schedule"
+                className="text-base font-medium"
+              >
                 Manage Schedule
               </Link>
             </nav>
             <div className="items-center justify-end md:flex md:flex-1 lg:w-0 pr-3">
               {/* Button */}
-              <Link
-                to="/signin"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
-              >
-                Sign in
-              </Link>
-              <Link
-                to="/signup"
-                className="ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
-              >
-                Sign up
-              </Link>
+              {token ? (
+                <button
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
+                  type="button"
+                  onClick={() => dispatch(logout())}
+                >
+                  Sign out
+                </button>
+              ) : (
+                <>
+                  <Link
+                    to="/signin"
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
+                  >
+                    Sign up
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

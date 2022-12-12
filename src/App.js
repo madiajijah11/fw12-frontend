@@ -17,6 +17,8 @@ import ManageMoviePage from "./pages/ManageMoviePage";
 import DashboardPage from "./pages/DashboardPage";
 import ManageSchedulePage from "./pages/ManageSchedulePage";
 
+import PrivateRoutes from "./components/PrivateRoutes";
+
 function App() {
   return (
     <Routes>
@@ -30,12 +32,54 @@ function App() {
       <Route path="/movie-details/:id" element={<MovieDetailsPage />} />
       <Route path="/order-page" element={<OrderPage />} />
       <Route path="/payment-page" element={<PaymentPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/order-history" element={<OrderHistoryPage />} />
-      <Route path="/ticket" element={<TicketPage />} />
-      <Route path="/admin/manage-movie" element={<ManageMoviePage />} />
-      <Route path="/admin/dashboard" element={<DashboardPage />} />
-      <Route path="/admin/manage-schedule" element={<ManageSchedulePage />} />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoutes>
+            <ProfilePage />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path="/order-history"
+        element={
+          <PrivateRoutes>
+            <OrderHistoryPage />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path="/ticket"
+        element={
+          <PrivateRoutes>
+            <TicketPage />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path="/admin/manage-movie"
+        element={
+          <PrivateRoutes>
+            <ManageMoviePage />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <PrivateRoutes>
+            <DashboardPage />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path="/admin/manage-schedule"
+        element={
+          <PrivateRoutes>
+            <ManageSchedulePage />
+          </PrivateRoutes>
+        }
+      />
     </Routes>
   );
 }
