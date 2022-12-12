@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
 import Logo from "../assets/images/mexl_cinema-1-edit.png";
+import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/reducers/authReducer";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
   const token = useSelector((state) => state.auth.token);
+  const decoded = token ? jwt_decode(token) : null;
+
   return (
     <>
       <nav className="relative bg-white">
@@ -45,15 +49,22 @@ const Navbar = () => {
               </Link>
             </nav>
             <div className="items-center justify-end md:flex md:flex-1 lg:w-0 pr-3">
-              {/* Button */}
-              {token ? (
-                <button
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
-                  type="button"
-                  onClick={() => dispatch(logout())}
-                >
-                  Sign out
-                </button>
+              {decoded ? (
+                <>
+                  <img
+                    className="rounded-full w-10 h-10 mr-5"
+                    src={imgURL + decoded.picture}
+                    alt="profile"
+                    title="profile"
+                  />
+                  <button
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
+                    type="button"
+                    onClick={() => dispatch(logout())}
+                  >
+                    Sign out
+                  </button>
+                </>
               ) : (
                 <>
                   <Link
