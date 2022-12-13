@@ -1,83 +1,174 @@
 import { Route, Routes } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
 
-import Homepage from "./pages/Homepage";
-import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
-import ForgotPassword from "./pages/ForgotPassword";
-import ResetPassword from "./pages/ResetPassword";
-import ListMoviesPage from "./pages/ListMoviePage";
+import LoggedInRoute from "./components/LoggedInRoute";
+import PageLoadingIndicator from "./components/PageLoadingIndicator";
 import NotFoundPage from "./pages/404";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
-import OrderPage from "./pages/OrderPage";
-import PaymentPage from "./pages/PaymentPage";
-import ProfilePage from "./pages/ProfilePage";
-import OrderHistoryPage from "./pages/OrderHistoryPage";
-import TicketPage from "./pages/TicketPage";
-import ManageMoviePage from "./pages/ManageMoviePage";
-import DashboardPage from "./pages/DashboardPage";
-import ManageSchedulePage from "./pages/ManageSchedulePage";
+import NotLoggedInRoute from "./components/NotLoggedInRoute";
 
-import PrivateRoutes from "./components/PrivateRoutes";
+const Homepage = lazy(() => import("./pages/Homepage"));
+const Signin = lazy(() => import("./pages/Signin"));
+const Signup = lazy(() => import("./pages/Signup"));
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const ListMoviesPage = lazy(() => import("./pages/ListMoviePage"));
+const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
+const OrderPage = lazy(() => import("./pages/OrderPage"));
+const PaymentPage = lazy(() => import("./pages/PaymentPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const OrderHistoryPage = lazy(() => import("./pages/OrderHistoryPage"));
+const TicketPage = lazy(() => import("./pages/TicketPage"));
+const ManageMoviePage = lazy(() => import("./pages/ManageMoviePage"));
+const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+const ManageSchedulePage = lazy(() => import("./pages/ManageSchedulePage"));
 
 function App() {
   return (
     <Routes>
       <Route path="*" element={<NotFoundPage />} />
-      <Route path="/" element={<Homepage />} />
-      <Route path="/signin" element={<Signin />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/list-movie" element={<ListMoviesPage />} />
-      <Route path="/movie-details/:id" element={<MovieDetailsPage />} />
-      <Route path="/order-page" element={<OrderPage />} />
-      <Route path="/payment-page" element={<PaymentPage />} />
+      <Route
+        index
+        path="/"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <Homepage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/signin"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <NotLoggedInRoute>
+              <Signin />
+            </NotLoggedInRoute>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <NotLoggedInRoute>
+              <Signup />
+            </NotLoggedInRoute>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/forgot-password"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <NotLoggedInRoute>
+              <ForgotPassword />
+            </NotLoggedInRoute>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/reset-password"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <NotLoggedInRoute>
+              <ResetPassword />
+            </NotLoggedInRoute>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/list-movie"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <ListMoviesPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/movie-details/:id"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <MovieDetailsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/order-page"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <LoggedInRoute>
+              <OrderPage />
+            </LoggedInRoute>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/payment-page"
+        element={
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <LoggedInRoute>
+              <PaymentPage />
+            </LoggedInRoute>
+          </Suspense>
+        }
+      />
       <Route
         path="/profile"
         element={
-          <PrivateRoutes>
-            <ProfilePage />
-          </PrivateRoutes>
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <LoggedInRoute>
+              <ProfilePage />
+            </LoggedInRoute>
+          </Suspense>
         }
       />
       <Route
         path="/order-history"
         element={
-          <PrivateRoutes>
-            <OrderHistoryPage />
-          </PrivateRoutes>
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <LoggedInRoute>
+              <OrderHistoryPage />
+            </LoggedInRoute>
+          </Suspense>
         }
       />
       <Route
         path="/ticket"
         element={
-          <PrivateRoutes>
-            <TicketPage />
-          </PrivateRoutes>
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <LoggedInRoute>
+              <TicketPage />
+            </LoggedInRoute>
+          </Suspense>
         }
       />
       <Route
         path="/admin/manage-movie"
         element={
-          <PrivateRoutes>
-            <ManageMoviePage />
-          </PrivateRoutes>
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <LoggedInRoute>
+              <ManageMoviePage />
+            </LoggedInRoute>
+          </Suspense>
         }
       />
       <Route
         path="/admin/dashboard"
         element={
-          <PrivateRoutes>
-            <DashboardPage />
-          </PrivateRoutes>
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <LoggedInRoute>
+              <DashboardPage />
+            </LoggedInRoute>
+          </Suspense>
         }
       />
       <Route
         path="/admin/manage-schedule"
         element={
-          <PrivateRoutes>
-            <ManageSchedulePage />
-          </PrivateRoutes>
+          <Suspense fallback={<PageLoadingIndicator />}>
+            <LoggedInRoute>
+              <ManageSchedulePage />
+            </LoggedInRoute>
+          </Suspense>
         }
       />
     </Routes>

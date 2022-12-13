@@ -1,14 +1,16 @@
-import { useLocation } from "react-router-dom";
 import FirstMovieDetailsSection from "./MovieDetailsComponents/FirstMDSection";
 import SecondMovieDetailSection from "./MovieDetailsComponents/SecondMDSection";
+import { useEffect } from "react";
 
 const DetailMovie = () => {
-  const { state } = useLocation();
-  console.log(state);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <div className="px-32 py-16">
-        <FirstMovieDetailsSection movie={state} />
+        <FirstMovieDetailsSection />
         <SecondMovieDetailSection />
       </div>
     </>

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { login } from "../actions/authAction";
+import { login, register } from "../actions/authAction";
 
 const initialState = {
   token: null,
@@ -21,6 +21,15 @@ const authSlice = createSlice({
       state.message = action.error.message;
     });
     build.addCase(login.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.token = action.payload;
+      state.message = "";
+    });
+    build.addCase(register.rejected, (state, action) => {
+      console.log(action);
+      state.message = action.error.message;
+    });
+    build.addCase(register.fulfilled, (state, action) => {
       console.log(action.payload);
       state.token = action.payload;
       state.message = "";

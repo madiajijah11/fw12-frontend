@@ -52,11 +52,21 @@ const Navbar = () => {
               {decoded ? (
                 <>
                   <img
-                    className="rounded-full w-10 h-10 mr-5"
-                    src={imgURL + decoded.picture}
+                    className="rounded-full w-12 h-12 mr-2"
+                    src={
+                      decoded?.picture
+                        ? imgURL + decoded.picture
+                        : imgURL + "user.jpg"
+                    }
                     alt="profile"
                     title="profile"
                   />
+                  <Link
+                    to="/profile"
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3] mr-2"
+                  >
+                    Profile
+                  </Link>
                   <button
                     className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
                     type="button"

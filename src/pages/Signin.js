@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 import { login } from "../redux/actions/authAction";
 
@@ -8,16 +9,14 @@ const Signin = () => {
   const navigate = useNavigate();
   const { message } = useSelector((state) => state.auth);
 
+  const [value, setValue] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { email, password } = event.target.elements;
-    dispatch(
-      login({
-        email: email.value,
-        password: password.value,
-        cb: () => navigate("/"),
-      })
-    );
+    dispatch(login({ ...value, cb: () => navigate("/") }));
   };
 
   return (
@@ -55,10 +54,15 @@ const Signin = () => {
                   Email
                 </label>
                 <input
+                  value={value.email}
+                  onChange={(event) =>
+                    setValue({ ...value, email: event.target.value })
+                  }
                   type="email"
                   placeholder="Write your email"
                   name="email"
                   className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  required
                 />
               </div>
               <div className="w-full">
@@ -69,10 +73,15 @@ const Signin = () => {
                   Password
                 </label>
                 <input
+                  value={value.password}
+                  onChange={(event) =>
+                    setValue({ ...value, password: event.target.value })
+                  }
                   type="password"
                   name="password"
                   placeholder="Write your password"
                   className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  required
                 />
               </div>
               <button

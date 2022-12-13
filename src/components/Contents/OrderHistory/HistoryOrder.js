@@ -1,8 +1,25 @@
 import { Link } from "react-router-dom";
 import ProfileImage from "../../../assets/images/profile.png";
 import Cinema from "../../../assets/images/Vector-1.png";
+import jwt_decode from "jwt-decode";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+
+import { logout } from "../../../redux/reducers/authReducer";
 
 const HistoryOrder = () => {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+  const decoded = token ? jwt_decode(token) : null;
+  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+
+  const [value, setValue] = useState({
+    firstName: decoded.firstName,
+    lastName: decoded.lastName,
+    phoneNumber: decoded.phoneNumber,
+    email: decoded.email,
+  });
+
   return (
     <>
       <div className="lg:px-32 py-16 md:px-16 sm:px-8 px-0">
@@ -12,24 +29,26 @@ const HistoryOrder = () => {
               <div className="font-normal text-base">INFO</div>
               <img
                 className="place-self-center"
-                src={ProfileImage}
+                src={decoded.picture ? decoded.picture : imgURL + "user.jpg"}
                 alt="user"
                 width="136"
                 height="136"
               />
               <div className="font-semibold text-xl text-center">
-                Jonas El Rodriguez
+                {decoded.firstName} {decoded.lastName}
               </div>
               <div className="font-normal text-base text-center">
                 Moviegoers
               </div>
               <hr />
-              <Link
-                to="/"
-                className="rounded-md bg-[#FA86BE] text-center px-4 py-2 text-white font-bold"
+              <button
+                onSubmit={() => {
+                  dispatch(logout());
+                }}
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
               >
                 Logout
-              </Link>
+              </button>
             </div>
           </div>
           <div className="w-full flex flex-col gap-10">

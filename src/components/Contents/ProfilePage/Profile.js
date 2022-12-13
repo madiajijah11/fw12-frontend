@@ -1,7 +1,26 @@
 import { Link } from "react-router-dom";
-import ProfileImage from "../../../assets/images/profile.png";
+import jwt_decode from "jwt-decode";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+
+import { logout } from "../../../redux/reducers/authReducer";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+  const decoded = token ? jwt_decode(token) : null;
+
+  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+
+  const [value, setValue] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+  });
+
+  // console.log(value);
+
   return (
     <>
       <div className="lg:px-32 py-16 md:px-16 sm:px-8 px-0">
@@ -11,24 +30,26 @@ const Profile = () => {
               <div className="font-normal text-base">INFO</div>
               <img
                 className="place-self-center"
-                src={ProfileImage}
+                src={decoded.picture ? decoded.picture : imgURL + "user.jpg"}
                 alt="user"
                 width="136"
                 height="136"
               />
               <div className="font-semibold text-xl text-center">
-                Jonas El Rodriguez
+                {decoded.firstName} {decoded.lastName}
               </div>
               <div className="font-normal text-base text-center">
                 Moviegoers
               </div>
               <hr />
-              <Link
-                to="/"
-                className="rounded-md bg-[#FA86BE] text-center px-4 py-2 text-white font-bold"
+              <button
+                onSubmit={() => {
+                  dispatch(logout());
+                }}
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
               >
                 Logout
-              </Link>
+              </button>
             </div>
           </div>
           <div className="w-full flex flex-col gap-10">
@@ -50,19 +71,29 @@ const Profile = () => {
                   <div className="flex flex-col gap-2">
                     <label htmlFor="FirstName">First Name</label>
                     <input
+                      value={value.firstName}
+                      onChange={(event) =>
+                        setValue({ ...value, firstName: event.target.value })
+                      }
                       className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                       type="text"
                       name="firstName"
                       placeholder="jonas"
+                      required
                     />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="LastName">Last Name</label>
                     <input
+                      value={value.lastName}
+                      onChange={(event) =>
+                        setValue({ ...value, lastName: event.target.value })
+                      }
                       className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                       type="text"
                       name="lastName"
                       placeholder="El Rodriguez"
+                      required
                     />
                   </div>
                 </div>
@@ -70,26 +101,30 @@ const Profile = () => {
                   <div className="flex flex-col gap-2">
                     <label htmlFor="Email">Email</label>
                     <input
+                      value={value.email}
+                      onChange={(event) =>
+                        setValue({ ...value, email: event.target.value })
+                      }
                       className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                       type="email"
                       name="email"
                       placeholder="jonasrodrigu123@gmail.com"
+                      required
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="PhoneNumber">Phone Number</label>
-                    <div className="flex border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent">
-                      <input
-                        className="rounded-md rounded-r-none border-r-[#FA86BE] px-4 border-r py-2 w-16"
-                        type="text"
-                        placeholder="+62"
-                      />
-                      <input
-                        className="rounded-md rounded-l-none px-4 py-2 border-l-[#FA86BE] border-l w-full"
-                        type="text"
-                        placeholder="81445687121"
-                      />
-                    </div>
+                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <input
+                      value={value.phoneNumber}
+                      onChange={(event) =>
+                        setValue({ ...value, phoneNumber: event.target.value })
+                      }
+                      type="tel"
+                      placeholder="+6281234567890"
+                      name="phoneNumber"
+                      className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                      required
+                    />
                   </div>
                 </div>
               </div>

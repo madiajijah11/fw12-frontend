@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import LoadingIndicator from "../../LoadingIndicator";
+import { Link } from "react-router-dom";
 
 const months = [
   "September",
@@ -23,7 +23,6 @@ const MovieList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
 
-  const navigate = useNavigate();
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
   useEffect(() => {
@@ -97,18 +96,16 @@ const MovieList = () => {
                       {movie.title}
                     </div>
                     <div className="flex flex-row">
-                      <div className="text-sm w-[130px]">{movie.genre}</div>
+                      <div className="text-sm w-[130px]">
+                        {movie.genre.split(",").slice(0, 3).join(", ")}
+                      </div>
                     </div>
-                    <button
-                      onClick={() => {
-                        navigate(`/movie-details/${movie.id}`, {
-                          state: movie,
-                        });
-                      }}
+                    <Link
+                      to={`/movie-details/${movie.id}`}
                       className="bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium w-[130px]"
                     >
                       Details
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

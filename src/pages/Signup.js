@@ -1,6 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+
+import { register } from "../redux/actions/authAction";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { message } = useSelector((state) => state.auth);
+
+  const [value, setValue] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(register({ ...value, cb: () => navigate("/") }));
+  };
+
   return (
     <>
       <div className="grid sm:grid-cols-[2fr,1.3fr] h-screen">
@@ -24,7 +45,10 @@ const Signup = () => {
             <div className="font-thin text-gray-700">
               Fill your additional details
             </div>
-            <form className="flex flex-col items-center w-full gap-4">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col items-center w-full gap-4"
+            >
               <div className="w-full">
                 <label
                   htmlFor="firstName"
@@ -33,10 +57,15 @@ const Signup = () => {
                   First Name
                 </label>
                 <input
+                  value={value.firstName}
+                  onChange={(event) =>
+                    setValue({ ...value, firstName: event.target.value })
+                  }
                   type="text"
                   placeholder="Write your first name"
                   name="firstName"
                   className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  required
                 />
               </div>
               <div className="w-full">
@@ -47,10 +76,15 @@ const Signup = () => {
                   Last Name
                 </label>
                 <input
+                  value={value.lastName}
+                  onChange={(event) =>
+                    setValue({ ...value, lastName: event.target.value })
+                  }
                   type="text"
                   placeholder="Write your last name"
                   name="lastName"
                   className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  required
                 />
               </div>
               <div className="w-full">
@@ -61,10 +95,15 @@ const Signup = () => {
                   Phone Number
                 </label>
                 <input
-                  type="text"
+                  value={value.phoneNumber}
+                  onChange={(event) =>
+                    setValue({ ...value, phoneNumber: event.target.value })
+                  }
+                  type="tel"
                   placeholder="Write your phone number"
                   name="phoneNumber"
                   className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  required
                 />
               </div>
               <div className="w-full">
@@ -75,10 +114,15 @@ const Signup = () => {
                   Email
                 </label>
                 <input
+                  value={value.email}
+                  onChange={(event) =>
+                    setValue({ ...value, email: event.target.value })
+                  }
                   type="email"
                   placeholder="Write your email"
                   name="email"
                   className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  required
                 />
               </div>
               <div className="w-full">
@@ -89,10 +133,15 @@ const Signup = () => {
                   Password
                 </label>
                 <input
+                  value={value.password}
+                  onChange={(event) =>
+                    setValue({ ...value, password: event.target.value })
+                  }
                   type="password"
                   name="password"
                   placeholder="Password"
                   className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  required
                 />
               </div>
               <button
@@ -102,6 +151,11 @@ const Signup = () => {
                 Sign Up
               </button>
             </form>
+            {message && (
+              <div className="text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md">
+                {message}
+              </div>
+            )}
             <div className="text-center">
               <div>
                 Already have account?{" "}
