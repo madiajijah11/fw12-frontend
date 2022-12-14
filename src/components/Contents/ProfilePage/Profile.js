@@ -19,8 +19,6 @@ const Profile = () => {
     email: "",
   });
 
-  // console.log(value);
-
   return (
     <>
       <div className="lg:px-32 py-16 md:px-16 sm:px-8 px-0">

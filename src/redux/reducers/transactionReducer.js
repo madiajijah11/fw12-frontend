@@ -3,18 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { checkout } from "../actions/transactionAction";
 
 const initialState = {
-  bookingDate: "",
+  userId: "",
   movieId: "",
   cinemaId: "",
-  movieScheduleId: "",
+  bookingDate: "",
+  bookingTime: "",
+  seatNum: "",
   fullName: "",
   email: "",
   phoneNumber: "",
-  statusId: "",
   paymentMethodId: "",
-  userId: "",
-  seatNum: "",
-  transactionId: "",
 };
 
 const transactionSlice = createSlice({
@@ -22,16 +20,19 @@ const transactionSlice = createSlice({
   initialState,
   reducers: {
     chooseMovie: (state, action) => {
-      const { movieId, cinemaId, movieScheduleId, bookingDate } =
-        action.payload;
+      const { movieId, cinemaId, bookingTime, bookingDate } = action.payload;
       state = {
         ...state,
-        ...{ movieId, cinemaId, movieScheduleId, bookingDate },
+        ...{ movieId, cinemaId, bookingTime, bookingDate },
       };
       return state;
     },
     chooseSeat: (state, action) => {
-      state.seatNum = action.payload;
+      const { seatNum } = action.payload;
+      state = {
+        ...state,
+        ...{ seatNum },
+      };
       return state;
     },
     choosePayment: (state, action) => {
@@ -43,15 +44,7 @@ const transactionSlice = createSlice({
       return state;
     },
   },
-  extraReducers: (build) => {
-    build.addCase(checkout.pending, (state, action) => {
-      state = {
-        ...state,
-        ...{ statusId: 1 },
-      };
-      return state;
-    });
-  },
+  extraReducers: (build) => {},
 });
 
 export const { chooseMovie, chooseSeat, choosePayment } =

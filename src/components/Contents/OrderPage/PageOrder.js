@@ -1,7 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cinema from "../../../assets/images/Vector-1.png";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { chooseSeat } from "../../../redux/reducers/transactionReducer";
 
 const PageOrder = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [selectedSeat, setSelectedSeat] = useState([]);
+
+  const selectSeat = (seat) => {
+    if (selectedSeat.includes(seat)) {
+      setSelectedSeat([...selectedSeat.filter((item) => item !== seat)]);
+    } else {
+      setSelectedSeat([...selectedSeat, seat]);
+    }
+  };
+
+  const checkout = () => {
+    dispatch(chooseSeat({ seatNum: selectedSeat.join(", ") }));
+    navigate("/payment-page");
+  };
   return (
     <div className="lg:px-32 py-16 md:px-16 sm:px-8 px-0">
       <div className="flex flex-row bg-gray-100 p-20 rounded-lg gap-10">
@@ -30,137 +50,108 @@ const PageOrder = () => {
                 <hr className="w-full border-b-2 " />
                 <div>
                   <div className="flex flex-row">
-                    <div className="grid grid-cols-8 gap-2">
-                      <div className="h-6 w-6 rounded-sm">A</div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-300"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm">B</div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-300"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-300"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm">C</div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-[#FA86BE]"></div>
-                      <div className="h-6 w-6 rounded-sm bg-[#FA86BE]"></div>
-                      <div className="h-6 w-6 rounded-sm bg-[#FA86BE]"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm">D</div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-300"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm">E</div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-300"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm">F</div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm">G</div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-300"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm bg-gray-100"></div>
-                      <div className="h-6 w-6 rounded-sm"></div>
-                      <div className="h-6 w-6 rounded-sm">1</div>
-                      <div className="h-6 w-6 rounded-sm">2</div>
-                      <div className="h-6 w-6 rounded-sm">3</div>
-                      <div className="h-6 w-6 rounded-sm">4</div>
-                      <div className="h-6 w-6 rounded-sm">5</div>
-                      <div className="h-6 w-6 rounded-sm">6</div>
-                      <div className="h-6 w-6 rounded-sm">7</div>
+                    <div className="grid grid-rows-8 gap-2">
+                      {["A", "B", "C", "D", "E", "F", "G", " "].map(
+                        (abc, index) => {
+                          return (
+                            <div className="grid grid-cols-8 gap-2" key={index}>
+                              {["0", "1", "2", "3", "4", "5", "6", "7"].map(
+                                (number, index) => {
+                                  if (number > 0) {
+                                    if (abc !== " ") {
+                                      const seatNumber = `${abc}${number}`;
+                                      return (
+                                        <button
+                                          key={index}
+                                          onClick={() => selectSeat(seatNumber)}
+                                          className={`hover:bg-[#9AEBED] h-6 w-6 rounded-sm ${
+                                            (selectedSeat.includes(
+                                              seatNumber
+                                            ) &&
+                                              " bg-[#FA86BE]") ||
+                                            " bg-gray-100"
+                                          }`}
+                                        ></button>
+                                      );
+                                    } else {
+                                      return (
+                                        <div
+                                          key={index}
+                                          className="h-6 w-6 rounded-sm text-center"
+                                        >
+                                          {number}
+                                        </div>
+                                      );
+                                    }
+                                  } else {
+                                    return (
+                                      <div
+                                        key={index}
+                                        className="h-6 w-6 rounded-sm text-center"
+                                      >
+                                        {abc}
+                                      </div>
+                                    );
+                                  }
+                                }
+                              )}
+                            </div>
+                          );
+                        }
+                      )}
                     </div>
-                    <div className="grid grid-cols-8 gap-2">
-                      <div className="w-6 h-6 rounded-sm"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-300"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-300"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-300"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-300"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-300"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm bg-gray-100"></div>
-                      <div className="w-6 h-6 rounded-sm"></div>
-                      <div className="w-6 h-6 rounded-sm">8</div>
-                      <div className="w-6 h-6 rounded-sm">9</div>
-                      <div className="w-6 h-6 rounded-sm">10</div>
-                      <div className="w-6 h-6 rounded-sm">11</div>
-                      <div className="w-6 h-6 rounded-sm">12</div>
-                      <div className="w-6 h-6 rounded-sm">13</div>
-                      <div className="w-6 h-6 rounded-sm">14</div>
+                    <div className="grid grid-rows-8 gap-2">
+                      {["A", "B", "C", "D", "E", "F", "G", " "].map(
+                        (abc, index) => {
+                          return (
+                            <div className="grid grid-cols-8 gap-2" key={index}>
+                              {[
+                                "0",
+                                "8",
+                                "9",
+                                "10",
+                                "11",
+                                "12",
+                                "13",
+                                "14",
+                              ].map((number, index) => {
+                                if (number > 0) {
+                                  if (abc !== " ") {
+                                    const seatNumber = `${abc}${number}`;
+                                    return (
+                                      <button
+                                        key={index}
+                                        onClick={() => selectSeat(seatNumber)}
+                                        className={`hover:bg-[#9AEBED] h-6 w-6 rounded-sm ${
+                                          (selectedSeat.includes(seatNumber) &&
+                                            " bg-[#FA86BE]") ||
+                                          " bg-gray-100"
+                                        }`}
+                                      ></button>
+                                    );
+                                  } else {
+                                    return (
+                                      <div
+                                        key={index}
+                                        className="h-6 w-6 rounded-sm text-center"
+                                      >
+                                        {number}
+                                      </div>
+                                    );
+                                  }
+                                } else {
+                                  return (
+                                    <div
+                                      key={index}
+                                      className="h-6 w-6 rounded-sm text-center"
+                                    ></div>
+                                  );
+                                }
+                              })}
+                            </div>
+                          );
+                        }
+                      )}
                     </div>
                   </div>
                 </div>
@@ -188,18 +179,18 @@ const PageOrder = () => {
               </div>
             </div>
             <div className="flex justify-between">
-              <Link
-                to="/movie-list"
+              <button
+                onClick={() => navigate(-1)}
                 className="border-[#FA86BE] border px-4 py-2 rounded-md text-[#FA86BE] hover:bg-[#A275E3] hover:border-[#A275E3] hover:text-white font-bold text-base"
               >
                 Change your movie
-              </Link>
-              <Link
-                to="#"
+              </button>
+              <button
+                onClick={checkout}
                 className="bg-[#A275E3] text-white px-4 py-2 rounded-md hover:bg-transparent hover:border-[#FA86BE] hover:border hover:text-[#FA86BE] font-bold text-base"
               >
                 Checkout now
-              </Link>
+              </button>
             </div>
           </div>
         </div>

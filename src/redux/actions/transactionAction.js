@@ -3,19 +3,28 @@ import axios from "axios";
 
 export const checkout = createAsyncThunk(
   "transactions/checkout",
-  async ({ transactionData }) => {
+  async ({ ...transactionData }, { getState, rejectWithValue }) => {
     try {
-      const res = await axios.post(
+      const { auth } = getState();
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
+        },
+      };
+      const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}/transactions/checkout`,
-        {
-          ...transactionData,
-        }
+        { ...transactionData },
+        config
       );
-      console.log(res.data.data);
-      return res.data.data;
-    } catch (err) {
-      console.log(err.response.data.message);
-      return err.response.data.message;
+      return data.data;
+    } catch (error) {
+      console.log(error);
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );

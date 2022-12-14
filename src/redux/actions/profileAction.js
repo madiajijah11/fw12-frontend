@@ -15,10 +15,8 @@ export const getProfile = createAsyncThunk(
         `${process.env.REACT_APP_API_URL}/profile`,
         config
       );
-      console.log(data);
       return data;
     } catch (error) {
-      console.log(error);
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
       } else {

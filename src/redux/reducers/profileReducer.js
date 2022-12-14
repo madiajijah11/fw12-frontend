@@ -17,7 +17,6 @@ const profileSlice = createSlice({
       state.loading = true;
     });
     build.addCase(getProfile.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.userInfo = action.payload.data;
       state.loading = false;
       state.error = null;
