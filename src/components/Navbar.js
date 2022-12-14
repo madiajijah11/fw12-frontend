@@ -1,14 +1,22 @@
 import Logo from "../assets/images/mexl_cinema-1-edit.png";
-import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
 import { logout } from "../redux/reducers/authReducer";
+import { getProfile } from "../redux/actions/profileAction";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
-  const token = useSelector((state) => state.auth.token);
-  const decoded = token ? jwt_decode(token) : null;
+  const token = useSelector((state) => state?.auth?.token);
+  const { userInfo } = useSelector((state) => state?.profile);
+
+  useEffect(() => {
+    if (token !== null) {
+      dispatch(getProfile());
+    }
+  }, [dispatch, token]);
 
   return (
     <>
@@ -49,13 +57,16 @@ const Navbar = () => {
               </Link>
             </nav>
             <div className="items-center justify-end md:flex md:flex-1 lg:w-0 pr-3">
-              {decoded ? (
+              {token ? (
                 <>
+                  <div className="text-xs rounded-md border border-[#FA86BE] p-2 mr-2">
+                    {userInfo?.firstName} {userInfo?.lastName}
+                  </div>
                   <img
                     className="rounded-full w-12 h-12 mr-2"
                     src={
-                      decoded?.picture
-                        ? imgURL + decoded.picture
+                      userInfo?.picture
+                        ? imgURL + userInfo?.picture
                         : imgURL + "user.jpg"
                     }
                     alt="profile"

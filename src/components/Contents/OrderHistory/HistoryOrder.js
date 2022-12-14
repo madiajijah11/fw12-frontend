@@ -9,7 +9,7 @@ import { logout } from "../../../redux/reducers/authReducer";
 
 const HistoryOrder = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state?.auth?.token);
   const decoded = token ? jwt_decode(token) : null;
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 

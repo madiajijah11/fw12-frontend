@@ -7,7 +7,7 @@ import { login } from "../redux/actions/authAction";
 const Signin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { message } = useSelector((state) => state.auth);
+  const { error, loading } = useSelector((state) => state.auth);
 
   const [value, setValue] = useState({
     email: "",
@@ -87,13 +87,14 @@ const Signin = () => {
               <button
                 type="submit"
                 className="bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white w-full rounded-md font-medium"
+                disabled={loading}
               >
                 Sign In
               </button>
             </form>
-            {message && (
+            {error && (
               <div className="text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md">
-                {message}
+                {error}
               </div>
             )}
             <div className="text-center">

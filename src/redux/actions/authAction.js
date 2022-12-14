@@ -3,26 +3,42 @@ import axios from "axios";
 
 export const login = createAsyncThunk(
   "auth/login",
-  async ({ email, password, cb }) => {
+  async ({ email, password, cb }, { rejectWithValue }) => {
     try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/login`,
-        { email, password }
+        { email, password },
+        config
       );
-      console.log(res.data.data.token);
       cb();
       return res.data.data.token;
-    } catch (err) {
-      console.log(err.response.data.message);
-      throw err.response.data.message;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );
 
 export const register = createAsyncThunk(
   "auth/register",
-  async ({ firstName, lastName, phoneNumber, email, password, cb }) => {
+  async (
+    { firstName, lastName, phoneNumber, email, password, cb },
+    { rejectWithValue }
+  ) => {
     try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/register`,
         {
@@ -31,14 +47,17 @@ export const register = createAsyncThunk(
           phoneNumber,
           email,
           password,
-        }
+        },
+        config
       );
-      console.log(res.data.data.token);
       cb();
       return res.data.data.token;
     } catch (error) {
-      console.log(error.response.data);
-      throw error.response.data.message;
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );
