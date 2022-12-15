@@ -47,7 +47,7 @@ const PagePayment = () => {
         ...value,
       })
     );
-    navigate("/order-history");
+    navigate("/profile");
   };
 
   return (
