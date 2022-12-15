@@ -1,24 +1,34 @@
 import { Link } from "react-router-dom";
-import ProfileImage from "../../../assets/images/profile.png";
 import Cinema from "../../../assets/images/Vector-1.png";
-import jwt_decode from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { logout } from "../../../redux/reducers/authReducer";
+import axios from "axios";
 
 const HistoryOrder = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state?.auth?.token);
-  const decoded = token ? jwt_decode(token) : null;
+  const token = useSelector((state) => state.auth.token);
+  const data = useSelector((state) => state.profile.userInfo);
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
-  const [value, setValue] = useState({
-    firstName: decoded.firstName,
-    lastName: decoded.lastName,
-    phoneNumber: decoded.phoneNumber,
-    email: decoded.email,
-  });
+  const [history, setHistory] = useState([]);
+
+  useEffect(() => {
+    getHistory();
+  }, []);
+
+  const getHistory = async () => {
+    const res = await axios.get(
+      process.env.REACT_APP_API_URL + "/transactions/history",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    setHistory(res.data.data);
+  };
 
   return (
     <>
@@ -29,13 +39,13 @@ const HistoryOrder = () => {
               <div className="font-normal text-base">INFO</div>
               <img
                 className="place-self-center"
-                src={decoded.picture ? decoded.picture : imgURL + "user.jpg"}
+                src={data?.picture ? data?.picture : imgURL + "user.jpg"}
                 alt="user"
                 width="136"
                 height="136"
               />
               <div className="font-semibold text-xl text-center">
-                {decoded.firstName} {decoded.lastName}
+                {data?.firstName} {data?.lastName}
               </div>
               <div className="font-normal text-base text-center">
                 Moviegoers
@@ -62,84 +72,42 @@ const HistoryOrder = () => {
                 </div>
               </div>
             </div>
-            <div className="px-8 py-10 flex flex-col bg-white rounded-lg gap-4">
-              <div className="grid gap-4">
-                <div className="flex justify-between">
-                  <div>
-                    <div>Tuesday, 07 July 2020 - 04:30pm</div>
-                    <div className="font-semibold text-2xl">
-                      Spider-Man: Homecoming
+            {history?.map((transHis) => {
+              return (
+                <div className="px-8 py-10 flex flex-col bg-white rounded-lg gap-4">
+                  <div className="grid gap-4">
+                    <div className="flex justify-between">
+                      <div>
+                        <div>
+                          {transHis?.bookingDate} - {transHis?.bookingTime}
+                        </div>
+                        <div className="font-semibold text-2xl">
+                          {transHis?.title}
+                        </div>
+                      </div>
+                      <div>
+                        <img
+                          src={imgURL + transHis?.cinemaPicture}
+                          alt={transHis?.cinemaName}
+                          title={transHis?.cinemaName}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <hr />
+                    </div>
+                    <div className="flex justify-between">
+                      <div>
+                        <div className="bg-green-500 px-6 py-2 rounded-md font-semibold text-white">
+                          <div>Ticket in active</div>
+                        </div>
+                      </div>
+                      <Link to="#">See Details</Link>
                     </div>
                   </div>
-                  <div>
-                    <img src={Cinema} alt="cineone21" />
-                  </div>
                 </div>
-                <div>
-                  <hr />
-                </div>
-                <div className="flex justify-between">
-                  <div>
-                    <div className="bg-green-500 px-6 py-2 rounded-md font-semibold text-white">
-                      <div>Ticket in active</div>
-                    </div>
-                  </div>
-                  <Link to="#">See Details</Link>
-                </div>
-              </div>
-            </div>
-            <div className="px-8 py-10 flex flex-col bg-white rounded-lg gap-4">
-              <div className="grid gap-4">
-                <div className="flex justify-between">
-                  <div>
-                    <div>Tuesday, 07 July 2020 - 04:30pm</div>
-                    <div className="font-semibold text-2xl">
-                      Spider-Man: Homecoming
-                    </div>
-                  </div>
-                  <div>
-                    <img src={Cinema} alt="cineone21" />
-                  </div>
-                </div>
-                <div>
-                  <hr />
-                </div>
-                <div className="flex justify-between">
-                  <div>
-                    <div className="bg-green-500 px-6 py-2 rounded-md font-semibold text-white">
-                      <div>Ticket in active</div>
-                    </div>
-                  </div>
-                  <Link to="#">See Details</Link>
-                </div>
-              </div>
-            </div>
-            <div className="px-8 py-10 flex flex-col bg-white rounded-lg gap-4">
-              <div className="grid gap-4">
-                <div className="flex justify-between">
-                  <div>
-                    <div>Tuesday, 07 July 2020 - 04:30pm</div>
-                    <div className="font-semibold text-2xl">
-                      Spider-Man: Homecoming
-                    </div>
-                  </div>
-                  <div>
-                    <img src={Cinema} alt="cineone21" />
-                  </div>
-                </div>
-                <div>
-                  <hr />
-                </div>
-                <div className="flex justify-between">
-                  <div>
-                    <div className="bg-green-500 px-6 py-2 rounded-md font-semibold text-white">
-                      <div>Ticket in active</div>
-                    </div>
-                  </div>
-                  <Link to="#">See Details</Link>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

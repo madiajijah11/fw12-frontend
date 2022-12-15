@@ -7,8 +7,7 @@ import { logout } from "../../../redux/reducers/authReducer";
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
-  const decoded = token ? jwt_decode(token) : null;
+  const data = useSelector((state) => state.profile.userInfo);
 
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
@@ -28,13 +27,13 @@ const Profile = () => {
               <div className="font-normal text-base">INFO</div>
               <img
                 className="place-self-center"
-                src={decoded.picture ? decoded.picture : imgURL + "user.jpg"}
+                src={data?.picture ? data?.picture : imgURL + "user.jpg"}
                 alt="user"
                 width="136"
                 height="136"
               />
               <div className="font-semibold text-xl text-center">
-                {decoded.firstName} {decoded.lastName}
+                {data?.firstName} {data?.lastName}
               </div>
               <div className="font-normal text-base text-center">
                 Moviegoers
@@ -69,7 +68,7 @@ const Profile = () => {
                   <div className="flex flex-col gap-2">
                     <label htmlFor="FirstName">First Name</label>
                     <input
-                      value={value.firstName}
+                      value={data?.firstName}
                       onChange={(event) =>
                         setValue({ ...value, firstName: event.target.value })
                       }
@@ -83,7 +82,7 @@ const Profile = () => {
                   <div className="flex flex-col gap-2">
                     <label htmlFor="LastName">Last Name</label>
                     <input
-                      value={value.lastName}
+                      value={data?.lastName}
                       onChange={(event) =>
                         setValue({ ...value, lastName: event.target.value })
                       }
@@ -99,7 +98,7 @@ const Profile = () => {
                   <div className="flex flex-col gap-2">
                     <label htmlFor="Email">Email</label>
                     <input
-                      value={value.email}
+                      value={data?.email}
                       onChange={(event) =>
                         setValue({ ...value, email: event.target.value })
                       }
@@ -113,7 +112,7 @@ const Profile = () => {
                   <div className="flex flex-col gap-2">
                     <label htmlFor="phoneNumber">Phone Number</label>
                     <input
-                      value={value.phoneNumber}
+                      value={data?.phoneNumber}
                       onChange={(event) =>
                         setValue({ ...value, phoneNumber: event.target.value })
                       }
