@@ -5,6 +5,7 @@ import LoggedInRoute from "./components/LoggedInRoute";
 import PageLoadingIndicator from "./components/PageLoadingIndicator";
 import NotFoundPage from "./pages/404";
 import NotLoggedInRoute from "./components/NotLoggedInRoute";
+import OrderSuccess from "./pages/OrderSuccess";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const Signin = lazy(() => import("./pages/Signin"));
@@ -25,6 +26,7 @@ const ManageSchedulePage = lazy(() => import("./pages/ManageSchedulePage"));
 function App() {
   return (
     <Routes>
+      <Route path="/order-success" element={<OrderSuccess />} />
       <Route path="*" element={<NotFoundPage />} />
       <Route
         index
