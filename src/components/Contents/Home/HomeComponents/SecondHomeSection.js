@@ -1,53 +1,20 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
+import http from "../../../../helpers/http";
 import { useEffect, useState } from "react";
 import LoadingIndicator from "../../../LoadingIndicator";
-
-// const NowShowingMovies = [
-//   {
-//     id: 1,
-//     title: "Spider-Man: Homecoming",
-//     picture: require("../../../../assets/images/Rectangle-119.png"),
-//     genre: "Action, Adventure, Sci-Fi",
-//   },
-//   {
-//     id: 2,
-//     title: "Lion King",
-//     picture: require("../../../../assets/images/Rectangle-119-1.png"),
-//     genre: "Animation, Adventure, Drama",
-//   },
-//   {
-//     id: 3,
-//     title: "John Wick: Chapter 3 - Parabellum",
-//     picture: require("../../../../assets/images/Rectangle-119-2.png"),
-//     genre: "Action, Crime, Thriller",
-//   },
-//   {
-//     id: 4,
-//     title: "Spider-Man: Homecoming",
-//     picture: require("../../../../assets/images/Rectangle-119.png"),
-//     genre: "Action, Adventure, Sci-Fi",
-//   },
-//   {
-//     id: 5,
-//     title: "Lion King",
-//     picture: require("../../../../assets/images/Rectangle-119-1.png"),
-//     genre: "Animation, Adventure, Drama",
-//   },
-// ];
 
 const SecondHomeSection = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log(movies);
+
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
   const fetchMovies = async () => {
-    const response = await axios.get(
-      process.env.REACT_APP_API_URL + "/movies/nowshowing?sortBy=endDate"
-    );
-    if (response.data.data) {
-      setMovies(response.data.data);
+    const response = await http().get("/api/v1/movies/nowShowing");
+    if (response.data.results) {
+      setMovies(response.data.results);
       setIsLoading(false);
     } else {
       setMovies([]);
@@ -91,7 +58,11 @@ const SecondHomeSection = () => {
                     </div>
                     <div className="flex flex-row">
                       <div className="text-sm w-[130px]">
-                        {movie.genre.split(",").slice(0, 3).join(", ")}
+                        {movie.movieGenre.map((genre) => (
+                          <span key={genre.genres.name}>
+                            {genre.genres.name},{" "}
+                          </span>
+                        ))}
                       </div>
                     </div>
                     <Link

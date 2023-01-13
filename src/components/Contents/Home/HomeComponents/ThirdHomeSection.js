@@ -1,77 +1,52 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
+import http from "../../../../helpers/http";
 import { useEffect, useState } from "react";
 import LoadingIndicator from "../../../LoadingIndicator";
 
-// const MovieUpComing = [
-//   {
-//     id: 1,
-//     title: "Black Widow",
-//     picture: require("../../../../assets/images/Rectangle-139.png"),
-//     genre: "Action, Adventure, Sci-Fi",
-//   },
-//   {
-//     id: 2,
-//     title: "The Witches",
-//     picture: require("../../../../assets/images/Rectangle-139-1.png"),
-//     genre: "Adventure, Comedy, Family",
-//   },
-//   {
-//     id: 3,
-//     title: "Tenet",
-//     picture: require("../../../../assets/images/Rectangle-139-2.png"),
-//     genre: "Action, Sci-Fi, Thriller",
-//   },
-//   {
-//     id: 4,
-//     title: "Black Widow",
-//     picture: require("../../../../assets/images/Rectangle-139.png"),
-//     genre: "Action, Adventure, Sci-Fi",
-//   },
-//   {
-//     id: 5,
-//     title: "The Witches",
-//     picture: require("../../../../assets/images/Rectangle-139-1.png"),
-//     genre: "Adventure, Comedy, Family",
-//   },
-// ];
-
-const months = [
-  "September",
-  "October",
-  "November",
-  "December",
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-];
-
 const ThirdHomeSection = () => {
   const [movies, setMovies] = useState([]);
+  const [months, setMonths] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
-  const fetchMovies = async () => {
-    const response = await axios.get(
-      process.env.REACT_APP_API_URL +
-        "/movies/upcoming?sortBy=releaseDate&sort=DESC"
-    );
-    if (response.data.data) {
-      setMovies(response.data.data);
+  const fetchMonths = async () => {
+    const response = await http().get("/api/v1/months");
+    if (response.data.results) {
+      setMonths(response.data.results);
       setIsLoading(false);
     } else {
-      setMovies([]);
+      setMonths([]);
       setIsLoading(true);
     }
   };
 
+  const fetchMovies = async (month) => {
+    if (month) {
+      const response = await http().get(
+        `/api/v1/movies/upcoming?month=${month}`
+      );
+      if (response.data.results) {
+        setMovies(response.data.results);
+        setIsLoading(false);
+      } else {
+        setMovies([]);
+        setIsLoading(true);
+      }
+    } else {
+      const response = await http().get("/api/v1/movies/upcoming");
+      if (response.data.results) {
+        setMovies(response.data.results);
+        setIsLoading(false);
+      } else {
+        setMovies([]);
+        setIsLoading(true);
+      }
+    }
+  };
+
   useEffect(() => {
+    fetchMonths();
     fetchMovies();
   }, []);
 
@@ -88,12 +63,15 @@ const ThirdHomeSection = () => {
           </div>
           {/* Show Months */}
           <div className="flex flex-row mt-10 overflow-x-auto place-content-between mb-10">
-            {months.map((month, index) => (
+            {months?.map((month) => (
               <button
-                key={`month-${index}`}
+                key={month.id}
                 className="border-2 w-[100px] border-[#FA86BE] rounded-md flex justify-center items-center p-2 my-5 mx-5 hover:bg-[#FA86BE] text-[#FA86BE] hover:text-white font-bold hover:shadow-md hover:shadow-[#A275E3]"
+                onClick={() => {
+                  fetchMovies(month.id);
+                }}
               >
-                {month}
+                {month.name}
               </button>
             ))}
           </div>
@@ -114,7 +92,11 @@ const ThirdHomeSection = () => {
                     </div>
                     <div className="flex flex-row">
                       <div className="text-sm w-[130px]">
-                        {movie.genre.split(",").slice(0, 3).join(", ")}
+                        {movie.movieGenre.map((genre) => (
+                          <span key={genre.genres.name}>
+                            {genre.genres.name},{" "}
+                          </span>
+                        ))}
                       </div>
                     </div>
                     <Link

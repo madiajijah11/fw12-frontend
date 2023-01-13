@@ -51,8 +51,10 @@ export const register = createAsyncThunk(
         config
       );
       cb();
+      console.log(res);
       return res.data.data.token;
     } catch (error) {
+      console.log(error);
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
       } else {

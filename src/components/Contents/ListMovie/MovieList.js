@@ -1,50 +1,63 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import LoadingIndicator from "../../LoadingIndicator";
 import { Link } from "react-router-dom";
-
-const months = [
-  "September",
-  "October",
-  "November",
-  "December",
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-];
+import http from "../../../helpers/http";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [months, setMonths] = useState([]);
+  const [paginating, setPaginating] = useState(1);
+  const [month, setMonth] = useState("");
+  const [order, setOrder] = useState("");
 
   const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
 
-  useEffect(() => {
-    const fetchMoviesBySearch = async () => {
-      const response = await axios.get(
-        process.env.REACT_APP_API_URL +
-          `/movies?search=${search}&limit=8&page=1`
+  const fetchMonths = async () => {
+    const response = await http().get("/api/v1/months");
+    if (response.data.results) {
+      setMonths(response.data.results);
+      setIsLoading(false);
+    } else {
+      setMonths([]);
+      setIsLoading(true);
+    }
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const fetchMovies = async () => {
+      const response = await http().get(
+        `/api/v1/movies?month=${month}&search=${search}&page=${paginating}`
       );
-      if (response.data.data) {
-        setMovies(response.data.data);
+      if (response.data.results) {
+        setMovies(response.data.results);
         setIsLoading(false);
       } else {
         setMovies([]);
         setIsLoading(true);
       }
     };
-    const timeout = setTimeout(() => {
-      fetchMoviesBySearch();
-    }, 500);
+    fetchMovies();
+  };
 
-    return () => clearTimeout(timeout);
-  }, [search]);
+  useEffect(() => {
+    fetchMonths();
+    const fetchMovies = async () => {
+      const response = await http().get(
+        `/api/v1/movies?month=${month}&page=${paginating}&order=${order}`
+      );
+      if (response.data.results) {
+        setMovies(response.data.results);
+        setIsLoading(false);
+      } else {
+        setMovies([]);
+        setIsLoading(true);
+      }
+    };
+    fetchMovies();
+  }, [month, paginating, order]);
 
   return (
     <>
@@ -53,11 +66,20 @@ const MovieList = () => {
           <div className="text-2xl font-semibold">List Movie</div>
           <div className="flex flex-row justify-between items-center">
             <div className="mr-5">
-              <select className="rounded-md p-2" name="sort" id="sort">
-                <option>Sort</option>
+              <select
+                className="rounded-md p-2"
+                name="sort"
+                id="sort"
+                onChange={(e) => setOrder(e.target.value)}
+              >
+                <option value="" disabled selected>
+                  Sort
+                </option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
               </select>
             </div>
-            <div>
+            <div className="mr-5">
               <input
                 className="rounded-md p-2"
                 type="text"
@@ -65,16 +87,29 @@ const MovieList = () => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
+            <div>
+              <button
+                className="bg-[#FA86BE] hover:bg-[#A275E3] hover:shadow-md hover:shadow-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium"
+                onClick={(e) => {
+                  onSubmit(e);
+                }}
+              >
+                Search
+              </button>
+            </div>
           </div>
         </div>
         <div>
           <div className="flex flex-row mt-10 overflow-x-auto place-content-between mb-10">
-            {months.map((month, index) => (
+            {months?.map((month) => (
               <button
-                key={`month-${index}`}
+                key={month.id}
                 className="border-2 w-[100px] border-[#FA86BE] rounded-md flex justify-center items-center p-2 my-5 mx-5 hover:bg-[#FA86BE] text-[#FA86BE] hover:text-white font-bold hover:shadow-md hover:shadow-[#A275E3]"
+                onClick={() => {
+                  setMonth(month.id);
+                }}
               >
-                {month}
+                {month.name}
               </button>
             ))}
           </div>
@@ -97,7 +132,11 @@ const MovieList = () => {
                     </div>
                     <div className="flex flex-row">
                       <div className="text-sm w-[130px]">
-                        {movie.genre.split(",").slice(0, 3).join(", ")}
+                        {movie.movieGenre.map((genre) => (
+                          <span key={genre.genres.name}>
+                            {genre.genres.name},{" "}
+                          </span>
+                        ))}
                       </div>
                     </div>
                     <Link
@@ -114,17 +153,22 @@ const MovieList = () => {
         </div>
         {/* Paginating */}
         <div className="flex flex-row justify-center mt-10 gap-4">
-          <button className="bg-[#FA86BE] hover:bg-[#A275E3] hover:shadow-md hover:shadow-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium">
-            1
+          <button
+            className="bg-[#FA86BE] hover:bg-[#A275E3] hover:shadow-md hover:shadow-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium"
+            onClick={() => setPaginating(paginating - 1)}
+            disabled={paginating === 1}
+          >
+            Prev
           </button>
-          <button className="bg-[#FA86BE] hover:bg-[#A275E3] hover:shadow-md hover:shadow-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium">
-            2
-          </button>
-          <button className="bg-[#FA86BE] hover:bg-[#A275E3] hover:shadow-md hover:shadow-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium">
-            3
-          </button>
-          <button className="bg-[#FA86BE] hover:bg-[#A275E3] hover:shadow-md hover:shadow-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium">
-            4
+          <div className="bg-[#A275E3] shadow-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium">
+            {paginating}
+          </div>
+          <button
+            className="bg-[#FA86BE] hover:bg-[#A275E3] hover:shadow-md hover:shadow-[#A275E3] py-2 px-4 text-medium text-white rounded-md font-medium"
+            onClick={() => setPaginating(paginating + 1)}
+            disabled={movies.length < 7}
+          >
+            Next
           </button>
         </div>
       </div>
