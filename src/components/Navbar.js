@@ -1,14 +1,14 @@
-import Logo from "../assets/images/mexl_cinema-1-edit.png";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import Logo from '../assets/images/mexl_cinema-1-edit.png';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { logout } from "../redux/reducers/authReducer";
-import { getProfile } from "../redux/actions/profileAction";
-import { useEffect } from "react";
+import { logout } from '../redux/reducers/authReducer';
+import { getProfile } from '../redux/actions/profileAction';
+import { useEffect } from 'react';
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
   const token = useSelector((state) => state?.auth?.token);
   const { userInfo } = useSelector((state) => state?.profile);
 
@@ -27,12 +27,7 @@ const Navbar = () => {
             <div className="hidden sm:flex justify-start pl-3">
               <Link to="/">
                 <span className="sr-only">MexL Cinema</span>
-                <img
-                  className="h-12 w-auto"
-                  src={Logo}
-                  alt="MexL Cinema"
-                  title="MexL Cinema"
-                />
+                <img className="h-12 w-auto" src={Logo} alt="MexL Cinema" title="MexL Cinema" />
               </Link>
             </div>
             {/* Menu */}
@@ -49,10 +44,7 @@ const Navbar = () => {
               <Link to="/admin/manage-movie" className="text-base font-medium">
                 Manage Movie
               </Link>
-              <Link
-                to="/admin/manage-schedule"
-                className="text-base font-medium"
-              >
+              <Link to="/admin/manage-schedule" className="text-base font-medium">
                 Manage Schedule
               </Link>
             </nav>
@@ -64,11 +56,7 @@ const Navbar = () => {
                   </div>
                   <img
                     className="rounded-full w-12 h-12 mr-2"
-                    src={
-                      userInfo?.picture
-                        ? imgURL + userInfo?.picture
-                        : imgURL + "user.jpg"
-                    }
+                    src={userInfo?.picture ? imgURL + userInfo?.picture : imgURL + 'user.jpg'}
                     alt="profile"
                     title="profile"
                   />

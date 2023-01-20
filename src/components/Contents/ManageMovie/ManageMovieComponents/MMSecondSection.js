@@ -1,19 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import LoadingIndicator from "../../../LoadingIndicator";
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import LoadingIndicator from '../../../LoadingIndicator';
 
 const MMSecondSection = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
-  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
 
   const fetchMovies = async () => {
-    const response = await axios.get(
-      process.env.REACT_APP_API_URL + "/movies?limit=8&page=1"
-    );
+    const response = await axios.get(process.env.REACT_APP_API_URL + '/movies?limit=8&page=1');
     if (response.data.data) {
       setMovies(response.data.data);
       setIsLoading(false);
@@ -39,11 +37,7 @@ const MMSecondSection = () => {
               </select>
             </div>
             <div>
-              <input
-                className="rounded-md p-2"
-                type="text"
-                placeholder="Search movie name..."
-              />
+              <input className="rounded-md p-2" type="text" placeholder="Search movie name..." />
             </div>
           </div>
         </div>
@@ -60,16 +54,14 @@ const MMSecondSection = () => {
                     title={movie.title}
                   />
                   <div className="flex flex-col gap-2 h-full justify-end">
-                    <div className="text-2x1 font-semibold w-[130px] mt-2">
-                      {movie.title}
-                    </div>
+                    <div className="text-2x1 font-semibold w-[130px] mt-2">{movie.title}</div>
                     <div className="flex flex-row">
                       <div className="text-sm w-[130px]">{movie.genre}</div>
                     </div>
                     <button
                       onClick={() => {
                         navigate(`/movie-details/${movie.id}`, {
-                          state: movie,
+                          state: movie
                         });
                       }}
                       className="border border-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-[#FA86BE] rounded-md font-medium w-[130px]"
@@ -79,7 +71,7 @@ const MMSecondSection = () => {
                     <button
                       onClick={() => {
                         navigate(`/movie-details/${movie.id}`, {
-                          state: movie,
+                          state: movie
                         });
                       }}
                       className="border border-[#A275E3]  hover:bg-[#FA86BE] py-2 px-4 text-medium text-[#A275E3] rounded-md font-medium w-[130px]"

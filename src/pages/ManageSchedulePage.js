@@ -1,6 +1,6 @@
-import ManageSchedule from "../components/Contents/ManageSchedule/ManageSchedule";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import ManageSchedule from '../components/Contents/ManageSchedule/ManageSchedule';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 const ManageSchedulePage = () => {
   return (

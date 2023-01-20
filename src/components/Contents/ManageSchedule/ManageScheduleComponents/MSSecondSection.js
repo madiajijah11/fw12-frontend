@@ -1,4 +1,4 @@
-import Cinema1 from "../../../../assets/images/Vector.png";
+import Cinema1 from '../../../../assets/images/Vector.png';
 
 const MSSecondSection = () => {
   return (
@@ -33,9 +33,7 @@ const MSSecondSection = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-2xl">ebv.id</div>
-                  <div className="font-light text-sm">
-                    Whatever street No.12, South Purwokerto
-                  </div>
+                  <div className="font-light text-sm">Whatever street No.12, South Purwokerto</div>
                 </div>
               </div>
               <hr />
@@ -68,9 +66,7 @@ const MSSecondSection = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-2xl">ebv.id</div>
-                  <div className="font-light text-sm">
-                    Whatever street No.12, South Purwokerto
-                  </div>
+                  <div className="font-light text-sm">Whatever street No.12, South Purwokerto</div>
                 </div>
               </div>
               <hr />
@@ -103,9 +99,7 @@ const MSSecondSection = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-2xl">ebv.id</div>
-                  <div className="font-light text-sm">
-                    Whatever street No.12, South Purwokerto
-                  </div>
+                  <div className="font-light text-sm">Whatever street No.12, South Purwokerto</div>
                 </div>
               </div>
               <hr />
@@ -138,9 +132,7 @@ const MSSecondSection = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-2xl">ebv.id</div>
-                  <div className="font-light text-sm">
-                    Whatever street No.12, South Purwokerto
-                  </div>
+                  <div className="font-light text-sm">Whatever street No.12, South Purwokerto</div>
                 </div>
               </div>
               <hr />
@@ -173,9 +165,7 @@ const MSSecondSection = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-2xl">ebv.id</div>
-                  <div className="font-light text-sm">
-                    Whatever street No.12, South Purwokerto
-                  </div>
+                  <div className="font-light text-sm">Whatever street No.12, South Purwokerto</div>
                 </div>
               </div>
               <hr />
@@ -208,9 +198,7 @@ const MSSecondSection = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-2xl">ebv.id</div>
-                  <div className="font-light text-sm">
-                    Whatever street No.12, South Purwokerto
-                  </div>
+                  <div className="font-light text-sm">Whatever street No.12, South Purwokerto</div>
                 </div>
               </div>
               <hr />

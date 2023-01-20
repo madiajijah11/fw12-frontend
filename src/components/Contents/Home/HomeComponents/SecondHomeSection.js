@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import http from "../../../../helpers/http";
-import { useEffect, useState } from "react";
-import LoadingIndicator from "../../../LoadingIndicator";
+import { Link } from 'react-router-dom';
+import http from '../../../../helpers/http';
+import { useEffect, useState } from 'react';
+import LoadingIndicator from '../../../LoadingIndicator';
 
 const SecondHomeSection = () => {
   const [movies, setMovies] = useState([]);
@@ -9,10 +9,10 @@ const SecondHomeSection = () => {
 
   console.log(movies);
 
-  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
 
   const fetchMovies = async () => {
-    const response = await http().get("/api/v1/movies/nowShowing");
+    const response = await http().get('/api/v1/movies/nowShowing');
     if (response.data.results) {
       setMovies(response.data.results);
       setIsLoading(false);
@@ -32,9 +32,7 @@ const SecondHomeSection = () => {
         {/* Movie now showing */}
         <div className="container mx-auto">
           <div className="flex flex-row justify-between items-center">
-            <div className="text-2xl font-semibold text-[#FA86BE]">
-              Now Showing
-            </div>
+            <div className="text-2xl font-semibold text-[#FA86BE]">Now Showing</div>
             <div className="text-medium font-semibold text-[#FA86BE]">
               <Link to="/list-movie">View All</Link>
             </div>
@@ -53,15 +51,11 @@ const SecondHomeSection = () => {
                     />
                   </div>
                   <div className="top-2/4 hidden group-hover:flex flex-col gap-2">
-                    <div className="text-2x1 font-semibold w-[130px] mt-2">
-                      {movie.title}
-                    </div>
+                    <div className="text-2x1 font-semibold w-[130px] mt-2">{movie.title}</div>
                     <div className="flex flex-row">
                       <div className="text-sm w-[130px]">
                         {movie.movieGenre.map((genre) => (
-                          <span key={genre.genres.name}>
-                            {genre.genres.name},{" "}
-                          </span>
+                          <span key={genre.genres.name}>{genre.genres.name}, </span>
                         ))}
                       </div>
                     </div>

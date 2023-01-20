@@ -1,6 +1,6 @@
-import HistoryOrder from "../components/Contents/OrderHistory/HistoryOrder";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import HistoryOrder from '../components/Contents/OrderHistory/HistoryOrder';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 const OrderHistoryPage = () => {
   return (

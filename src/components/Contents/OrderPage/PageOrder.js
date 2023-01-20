@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import Cinema from "../../../assets/images/Vector-1.png";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from 'react-router-dom';
+import Cinema from '../../../assets/images/Vector-1.png';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { chooseSeat } from "../../../redux/reducers/transactionReducer";
+import { chooseSeat } from '../../../redux/reducers/transactionReducer';
 
 const PageOrder = () => {
   const navigate = useNavigate();
@@ -19,8 +19,8 @@ const PageOrder = () => {
   };
 
   const checkout = () => {
-    dispatch(chooseSeat({ seatNum: selectedSeat.join(", ") }));
-    navigate("/payment-page");
+    dispatch(chooseSeat({ seatNum: selectedSeat.join(', ') }));
+    navigate('/payment-page');
   };
   return (
     <div className="lg:px-32 py-16 md:px-16 sm:px-8 px-0">
@@ -29,9 +29,7 @@ const PageOrder = () => {
           <div className="flex flex-col gap-5 mb-8">
             <div className="text-2xl font-bold">Movie Selected</div>
             <div className="bg-white flex flex-row rounded-md p-10">
-              <div className="font-semibold text-2xl flex-1">
-                Spider-Man: Homecoming
-              </div>
+              <div className="font-semibold text-2xl flex-1">Spider-Man: Homecoming</div>
               <div className="border-[#FA86BE] border-2 hover:border-[#A275E3] rounded-md ">
                 <Link
                   to="/movie-list"
@@ -51,107 +49,76 @@ const PageOrder = () => {
                 <div>
                   <div className="flex flex-row">
                     <div className="grid grid-rows-8 gap-2">
-                      {["A", "B", "C", "D", "E", "F", "G", " "].map(
-                        (abc, index) => {
-                          return (
-                            <div className="grid grid-cols-8 gap-2" key={index}>
-                              {["0", "1", "2", "3", "4", "5", "6", "7"].map(
-                                (number, index) => {
-                                  if (number > 0) {
-                                    if (abc !== " ") {
-                                      const seatNumber = `${abc}${number}`;
-                                      return (
-                                        <button
-                                          key={index}
-                                          onClick={() => selectSeat(seatNumber)}
-                                          className={`hover:bg-[#9AEBED] h-6 w-6 rounded-sm ${
-                                            (selectedSeat.includes(
-                                              seatNumber
-                                            ) &&
-                                              " bg-[#FA86BE]") ||
-                                            " bg-gray-100"
-                                          }`}
-                                        ></button>
-                                      );
-                                    } else {
-                                      return (
-                                        <div
-                                          key={index}
-                                          className="h-6 w-6 rounded-sm text-center"
-                                        >
-                                          {number}
-                                        </div>
-                                      );
-                                    }
-                                  } else {
-                                    return (
-                                      <div
-                                        key={index}
-                                        className="h-6 w-6 rounded-sm text-center"
-                                      >
-                                        {abc}
-                                      </div>
-                                    );
-                                  }
-                                }
-                              )}
-                            </div>
-                          );
-                        }
-                      )}
-                    </div>
-                    <div className="grid grid-rows-8 gap-2">
-                      {["A", "B", "C", "D", "E", "F", "G", " "].map(
-                        (abc, index) => {
-                          return (
-                            <div className="grid grid-cols-8 gap-2" key={index}>
-                              {[
-                                "0",
-                                "8",
-                                "9",
-                                "10",
-                                "11",
-                                "12",
-                                "13",
-                                "14",
-                              ].map((number, index) => {
-                                if (number > 0) {
-                                  if (abc !== " ") {
-                                    const seatNumber = `${abc}${number}`;
-                                    return (
-                                      <button
-                                        key={index}
-                                        onClick={() => selectSeat(seatNumber)}
-                                        className={`hover:bg-[#9AEBED] h-6 w-6 rounded-sm ${
-                                          (selectedSeat.includes(seatNumber) &&
-                                            " bg-[#FA86BE]") ||
-                                          " bg-gray-100"
-                                        }`}
-                                      ></button>
-                                    );
-                                  } else {
-                                    return (
-                                      <div
-                                        key={index}
-                                        className="h-6 w-6 rounded-sm text-center"
-                                      >
-                                        {number}
-                                      </div>
-                                    );
-                                  }
+                      {['A', 'B', 'C', 'D', 'E', 'F', 'G', ' '].map((abc, index) => {
+                        return (
+                          <div className="grid grid-cols-8 gap-2" key={index}>
+                            {['0', '1', '2', '3', '4', '5', '6', '7'].map((number, index) => {
+                              if (number > 0) {
+                                if (abc !== ' ') {
+                                  const seatNumber = `${abc}${number}`;
+                                  return (
+                                    <button
+                                      key={index}
+                                      onClick={() => selectSeat(seatNumber)}
+                                      className={`hover:bg-[#9AEBED] h-6 w-6 rounded-sm ${
+                                        (selectedSeat.includes(seatNumber) && ' bg-[#FA86BE]') ||
+                                        ' bg-gray-100'
+                                      }`}
+                                    ></button>
+                                  );
                                 } else {
                                   return (
-                                    <div
-                                      key={index}
-                                      className="h-6 w-6 rounded-sm text-center"
-                                    ></div>
+                                    <div key={index} className="h-6 w-6 rounded-sm text-center">
+                                      {number}
+                                    </div>
                                   );
                                 }
-                              })}
-                            </div>
-                          );
-                        }
-                      )}
+                              } else {
+                                return (
+                                  <div key={index} className="h-6 w-6 rounded-sm text-center">
+                                    {abc}
+                                  </div>
+                                );
+                              }
+                            })}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="grid grid-rows-8 gap-2">
+                      {['A', 'B', 'C', 'D', 'E', 'F', 'G', ' '].map((abc, index) => {
+                        return (
+                          <div className="grid grid-cols-8 gap-2" key={index}>
+                            {['0', '8', '9', '10', '11', '12', '13', '14'].map((number, index) => {
+                              if (number > 0) {
+                                if (abc !== ' ') {
+                                  const seatNumber = `${abc}${number}`;
+                                  return (
+                                    <button
+                                      key={index}
+                                      onClick={() => selectSeat(seatNumber)}
+                                      className={`hover:bg-[#9AEBED] h-6 w-6 rounded-sm ${
+                                        (selectedSeat.includes(seatNumber) && ' bg-[#FA86BE]') ||
+                                        ' bg-gray-100'
+                                      }`}
+                                    ></button>
+                                  );
+                                } else {
+                                  return (
+                                    <div key={index} className="h-6 w-6 rounded-sm text-center">
+                                      {number}
+                                    </div>
+                                  );
+                                }
+                              } else {
+                                return (
+                                  <div key={index} className="h-6 w-6 rounded-sm text-center"></div>
+                                );
+                              }
+                            })}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -197,37 +164,23 @@ const PageOrder = () => {
         <div className="w-2/5 flex flex-col gap-5">
           <div className="text-2xl font-bold">Order Info</div>
           <div className="bg-white rounded-lg flex flex-col px-10 gap-4">
-            <img
-              className="mt-10 w-32 self-center"
-              src={Cinema}
-              alt="cineone21"
-            />
-            <div className="font-semibold text-2xl text-center">
-              CineOne21 Cinema
-            </div>
+            <img className="mt-10 w-32 self-center" src={Cinema} alt="cineone21" />
+            <div className="font-semibold text-2xl text-center">CineOne21 Cinema</div>
             <div className="grid gap-4">
               <div className="flex justify-between">
-                <div className="text-base font-normal text-gray-400">
-                  Movie Selected
-                </div>
+                <div className="text-base font-normal text-gray-400">Movie Selected</div>
                 <div className="font-semibold">Spider-Man: Homecoming</div>
               </div>
               <div className="flex justify-between">
-                <div className="text-base font-normal text-gray-400">
-                  Tuesday, 07 July 2020
-                </div>
+                <div className="text-base font-normal text-gray-400">Tuesday, 07 July 2020</div>
                 <div className="font-semibold">02:00</div>
               </div>
               <div className="flex justify-between">
-                <div className="text-base font-normal text-gray-400">
-                  One ticket price
-                </div>
+                <div className="text-base font-normal text-gray-400">One ticket price</div>
                 <div className="font-semibold">$10</div>
               </div>
               <div className="flex justify-between">
-                <div className="text-base font-normal text-gray-400">
-                  Seat choosed
-                </div>
+                <div className="text-base font-normal text-gray-400">Seat choosed</div>
                 <div className="font-semibold">C4, C5, C6</div>
               </div>
             </div>

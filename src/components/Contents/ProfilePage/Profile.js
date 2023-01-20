@@ -1,20 +1,20 @@
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-import { logout } from "../../../redux/reducers/authReducer";
+import { logout } from '../../../redux/reducers/authReducer';
 
 const Profile = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.profile.userInfo);
 
-  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
 
   const [value, setValue] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: ''
   });
 
   return (
@@ -26,7 +26,7 @@ const Profile = () => {
               <div className="font-normal text-base">INFO</div>
               <img
                 className="place-self-center"
-                src={data?.picture ? data?.picture : imgURL + "user.jpg"}
+                src={data?.picture ? data?.picture : imgURL + 'user.jpg'}
                 alt="user"
                 width="136"
                 height="136"
@@ -34,9 +34,7 @@ const Profile = () => {
               <div className="font-semibold text-xl text-center">
                 {data?.firstName} {data?.lastName}
               </div>
-              <div className="font-normal text-base text-center">
-                Moviegoers
-              </div>
+              <div className="font-normal text-base text-center">Moviegoers</div>
               <hr />
               <button
                 onSubmit={() => {
@@ -68,9 +66,7 @@ const Profile = () => {
                     <label htmlFor="FirstName">First Name</label>
                     <input
                       value={data?.firstName}
-                      onChange={(event) =>
-                        setValue({ ...value, firstName: event.target.value })
-                      }
+                      onChange={(event) => setValue({ ...value, firstName: event.target.value })}
                       className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                       type="text"
                       name="firstName"
@@ -82,9 +78,7 @@ const Profile = () => {
                     <label htmlFor="LastName">Last Name</label>
                     <input
                       value={data?.lastName}
-                      onChange={(event) =>
-                        setValue({ ...value, lastName: event.target.value })
-                      }
+                      onChange={(event) => setValue({ ...value, lastName: event.target.value })}
                       className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                       type="text"
                       name="lastName"
@@ -98,9 +92,7 @@ const Profile = () => {
                     <label htmlFor="Email">Email</label>
                     <input
                       value={data?.email}
-                      onChange={(event) =>
-                        setValue({ ...value, email: event.target.value })
-                      }
+                      onChange={(event) => setValue({ ...value, email: event.target.value })}
                       className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
                       type="email"
                       name="email"
@@ -112,9 +104,7 @@ const Profile = () => {
                     <label htmlFor="phoneNumber">Phone Number</label>
                     <input
                       value={data?.phoneNumber}
-                      onChange={(event) =>
-                        setValue({ ...value, phoneNumber: event.target.value })
-                      }
+                      onChange={(event) => setValue({ ...value, phoneNumber: event.target.value })}
                       type="tel"
                       placeholder="+6281234567890"
                       name="phoneNumber"

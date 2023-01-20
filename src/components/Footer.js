@@ -1,23 +1,23 @@
-import Logo from "../assets/images/mexl_cinema-1-edit-removebg.png";
-import { Link } from "react-router-dom";
-import { Icon } from "@iconify-icon/react";
+import Logo from '../assets/images/mexl_cinema-1-edit-removebg.png';
+import { Link } from 'react-router-dom';
+import { Icon } from '@iconify-icon/react';
 
 const sponsor = [
   {
     id: 1,
-    name: "ebv.id",
-    logo: require("../assets/images/Vector.png"),
+    name: 'ebv.id',
+    logo: require('../assets/images/Vector.png')
   },
   {
     id: 2,
-    name: "CineOne21",
-    logo: require("../assets/images/Vector-1.png"),
+    name: 'CineOne21',
+    logo: require('../assets/images/Vector-1.png')
   },
   {
     id: 3,
-    name: "hiflix",
-    logo: require("../assets/images/Vector-2.png"),
-  },
+    name: 'hiflix',
+    logo: require('../assets/images/Vector-2.png')
+  }
 ];
 
 const Footer = () => {
@@ -28,12 +28,7 @@ const Footer = () => {
           <div className="grid grid-flow-row gap-10 sm:gap-0 sm:grid-cols-4 w-full">
             <div className="">
               <figure>
-                <img
-                  className="w-auto h-auto"
-                  src={Logo}
-                  alt="Logo"
-                  title="MexL Cinema"
-                />
+                <img className="w-auto h-auto" src={Logo} alt="Logo" title="MexL Cinema" />
               </figure>
               <div className="text-medium w-full">
                 Still waiting in line for tickets? <br />
@@ -62,11 +57,7 @@ const Footer = () => {
                   <ul key={item.id}>
                     <li>
                       <a href="#">
-                        <img
-                          src={item.logo}
-                          alt={item.name}
-                          title={item.name}
-                        />
+                        <img src={item.logo} alt={item.name} title={item.name} />
                       </a>
                     </li>
                   </ul>
@@ -97,11 +88,7 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://www.twitter.com/Rappwalk"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href="https://www.twitter.com/Rappwalk" target="_blank" rel="noreferrer">
                       <Icon icon="ant-design:twitter-square-filled" /> Twitter
                     </a>
                   </li>
@@ -114,8 +101,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-center py-4">
             <p className="text-md">
-              © 2021 - {new Date().getFullYear()} MexL Cinema. All rights
-              reserved.
+              © 2021 - {new Date().getFullYear()} MexL Cinema. All rights reserved.
             </p>
           </div>
         </div>

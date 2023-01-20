@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import http from "../../../../helpers/http";
-import { useEffect, useState } from "react";
-import LoadingIndicator from "../../../LoadingIndicator";
+import { Link } from 'react-router-dom';
+import http from '../../../../helpers/http';
+import { useEffect, useState } from 'react';
+import LoadingIndicator from '../../../LoadingIndicator';
 
 const ThirdHomeSection = () => {
   const [movies, setMovies] = useState([]);
   const [months, setMonths] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
 
   const fetchMonths = async () => {
-    const response = await http().get("/api/v1/months");
+    const response = await http().get('/api/v1/months');
     if (response.data.results) {
       setMonths(response.data.results);
       setIsLoading(false);
@@ -23,9 +23,7 @@ const ThirdHomeSection = () => {
 
   const fetchMovies = async (month) => {
     if (month) {
-      const response = await http().get(
-        `/api/v1/movies/upcoming?month=${month}`
-      );
+      const response = await http().get(`/api/v1/movies/upcoming?month=${month}`);
       if (response.data.results) {
         setMovies(response.data.results);
         setIsLoading(false);
@@ -34,7 +32,7 @@ const ThirdHomeSection = () => {
         setIsLoading(true);
       }
     } else {
-      const response = await http().get("/api/v1/movies/upcoming");
+      const response = await http().get('/api/v1/movies/upcoming');
       if (response.data.results) {
         setMovies(response.data.results);
         setIsLoading(false);
@@ -87,15 +85,11 @@ const ThirdHomeSection = () => {
                     title={movie.title}
                   />
                   <div className="flex flex-col gap-2 h-full justify-end">
-                    <div className="text-2x1 font-semibold w-[130px] mt-2">
-                      {movie.title}
-                    </div>
+                    <div className="text-2x1 font-semibold w-[130px] mt-2">{movie.title}</div>
                     <div className="flex flex-row">
                       <div className="text-sm w-[130px]">
                         {movie.movieGenre.map((genre) => (
-                          <span key={genre.genres.name}>
-                            {genre.genres.name},{" "}
-                          </span>
+                          <span key={genre.genres.name}>{genre.genres.name}, </span>
                         ))}
                       </div>
                     </div>

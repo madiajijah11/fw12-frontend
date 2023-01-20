@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { getProfile } from "../actions/profileAction";
+import { createSlice } from '@reduxjs/toolkit';
+import { getProfile } from '../actions/profileAction';
 
 const initialState = {
   loading: false,
   userInfo: null,
   error: null,
-  success: false,
+  success: false
 };
 
 const profileSlice = createSlice({
-  name: "profile",
+  name: 'profile',
   initialState,
   reducers: {},
   extraReducers: (build) => {
@@ -25,7 +25,7 @@ const profileSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     });
-  },
+  }
 });
 
 export default profileSlice.reducer;

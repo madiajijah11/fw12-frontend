@@ -1,29 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-import { checkout } from "../actions/transactionAction";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  userId: "",
-  movieId: "",
-  cinemaId: "",
-  bookingDate: "",
-  bookingTime: "",
-  seatNum: "",
-  fullName: "",
-  email: "",
-  phoneNumber: "",
-  paymentMethodId: "",
+  userId: '',
+  movieId: '',
+  cinemaId: '',
+  bookingDate: '',
+  bookingTime: '',
+  seatNum: '',
+  fullName: '',
+  email: '',
+  phoneNumber: '',
+  paymentMethodId: ''
 };
 
 const transactionSlice = createSlice({
-  name: "transaction",
+  name: 'transaction',
   initialState,
   reducers: {
     chooseMovie: (state, action) => {
       const { movieId, cinemaId, bookingTime, bookingDate } = action.payload;
       state = {
         ...state,
-        ...{ movieId, cinemaId, bookingTime, bookingDate },
+        ...{ movieId, cinemaId, bookingTime, bookingDate }
       };
       return state;
     },
@@ -31,7 +29,7 @@ const transactionSlice = createSlice({
       const { seatNum } = action.payload;
       state = {
         ...state,
-        ...{ seatNum },
+        ...{ seatNum }
       };
       return state;
     },
@@ -39,15 +37,14 @@ const transactionSlice = createSlice({
       const { paymentMethodId, fullName, email, phoneNumber } = action.payload;
       state = {
         ...state,
-        ...{ paymentMethodId, fullName, email, phoneNumber },
+        ...{ paymentMethodId, fullName, email, phoneNumber }
       };
       return state;
-    },
+    }
   },
-  extraReducers: (build) => {},
+  extraReducers: (build) => {}
 });
 
-export const { chooseMovie, chooseSeat, choosePayment } =
-  transactionSlice.actions;
+export const { chooseMovie, chooseSeat, choosePayment } = transactionSlice.actions;
 
 export default transactionSlice.reducer;

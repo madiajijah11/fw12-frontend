@@ -1,6 +1,6 @@
-import PageOrder from "../components/Contents/OrderPage/PageOrder";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import PageOrder from '../components/Contents/OrderPage/PageOrder';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 const OrderPage = () => {
   return (

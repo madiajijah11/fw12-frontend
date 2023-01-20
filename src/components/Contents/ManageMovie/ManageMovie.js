@@ -1,5 +1,5 @@
-import MMFirstSection from "./ManageMovieComponents/MMFirstSection";
-import MMSecondSection from "./ManageMovieComponents/MMSecondSection";
+import MMFirstSection from './ManageMovieComponents/MMFirstSection';
+import MMSecondSection from './ManageMovieComponents/MMSecondSection';
 
 const ManageMovie = () => {
   return (

@@ -1,6 +1,6 @@
-import FirstMovieDetailsSection from "./MovieDetailsComponents/FirstMDSection";
-import SecondMovieDetailSection from "./MovieDetailsComponents/SecondMDSection";
-import { useEffect } from "react";
+import FirstMovieDetailsSection from './MovieDetailsComponents/FirstMDSection';
+import SecondMovieDetailSection from './MovieDetailsComponents/SecondMDSection';
+import { useEffect } from 'react';
 
 const DetailMovie = () => {
   useEffect(() => {

@@ -1,21 +1,21 @@
-import SampleImage from "../../../../assets/images/Rectangle-119.png";
+import SampleImage from '../../../../assets/images/Rectangle-119.png';
 
 const Premier = [
   {
     id: 1,
-    name: "ebv.id",
-    logo: require("../../../../assets/images/Vector.png"),
+    name: 'ebv.id',
+    logo: require('../../../../assets/images/Vector.png')
   },
   {
     id: 2,
-    name: "hiflix",
-    logo: require("../../../../assets/images/Vector-1.png"),
+    name: 'hiflix',
+    logo: require('../../../../assets/images/Vector-1.png')
   },
   {
     id: 3,
-    name: "cineone21",
-    logo: require("../../../../assets/images/Vector-2.png"),
-  },
+    name: 'cineone21',
+    logo: require('../../../../assets/images/Vector-2.png')
+  }
 ];
 
 const MSFirstSection = () => {
@@ -26,12 +26,7 @@ const MSFirstSection = () => {
         <div className="flex flex-col bg-[#9AEBED] px-20 py-16 rounded-lg">
           <div className="flex  w-full h-full gap-8 ">
             <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white h-full flex-shrink-0">
-              <img
-                className="w-40 h-60 rounded-md"
-                src={SampleImage}
-                alt="Img"
-                title="Img"
-              />
+              <img className="w-40 h-60 rounded-md" src={SampleImage} alt="Img" title="Img" />
             </div>
             <div className="w-full flex flex-col justify-between">
               <div className="flex flex-col gap-2">
@@ -70,11 +65,7 @@ const MSFirstSection = () => {
                         key={item.id}
                         className="flex items-center justify-center rounded-md hover:shadow-lg shadow-black w-full h-full p-1 bg-white"
                       >
-                        <img
-                          src={item.logo}
-                          alt={item.name}
-                          title={item.name}
-                        />
+                        <img src={item.logo} alt={item.name} title={item.name} />
                       </div>
                     ))}
                   </div>

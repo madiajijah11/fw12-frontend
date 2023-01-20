@@ -1,4 +1,4 @@
-import Banner from "../../../../assets/images/homepage.png";
+import Banner from '../../../../assets/images/homepage.png';
 
 const FirstHomeSection = () => {
   return (

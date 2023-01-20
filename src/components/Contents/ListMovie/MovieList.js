@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react";
-import LoadingIndicator from "../../LoadingIndicator";
-import { Link } from "react-router-dom";
-import http from "../../../helpers/http";
+import { useEffect, useState } from 'react';
+import LoadingIndicator from '../../LoadingIndicator';
+import { Link } from 'react-router-dom';
+import http from '../../../helpers/http';
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [months, setMonths] = useState([]);
   const [paginating, setPaginating] = useState(1);
-  const [month, setMonth] = useState("");
-  const [order, setOrder] = useState("");
+  const [month, setMonth] = useState('');
+  const [order, setOrder] = useState('');
 
-  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
 
   const fetchMonths = async () => {
-    const response = await http().get("/api/v1/months");
+    const response = await http().get('/api/v1/months');
     if (response.data.results) {
       setMonths(response.data.results);
       setIsLoading(false);
@@ -127,15 +127,11 @@ const MovieList = () => {
                     title={movie.title}
                   />
                   <div className="flex flex-col gap-2 h-full justify-end">
-                    <div className="text-2x1 font-semibold w-[130px] mt-2">
-                      {movie.title}
-                    </div>
+                    <div className="text-2x1 font-semibold w-[130px] mt-2">{movie.title}</div>
                     <div className="flex flex-row">
                       <div className="text-sm w-[130px]">
                         {movie.movieGenre.map((genre) => (
-                          <span key={genre.genres.name}>
-                            {genre.genres.name},{" "}
-                          </span>
+                          <span key={genre.genres.name}>{genre.genres.name}, </span>
                         ))}
                       </div>
                     </div>

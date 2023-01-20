@@ -1,27 +1,27 @@
-import { Route, Routes } from "react-router-dom";
-import React, { Suspense, lazy } from "react";
+import { Route, Routes } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
 
-import LoggedInRoute from "./components/LoggedInRoute";
-import PageLoadingIndicator from "./components/PageLoadingIndicator";
-import NotFoundPage from "./pages/404";
-import NotLoggedInRoute from "./components/NotLoggedInRoute";
-import OrderSuccess from "./pages/OrderSuccess";
+import LoggedInRoute from './components/LoggedInRoute';
+import PageLoadingIndicator from './components/PageLoadingIndicator';
+import NotFoundPage from './pages/404';
+import NotLoggedInRoute from './components/NotLoggedInRoute';
+import OrderSuccess from './pages/OrderSuccess';
 
-const Homepage = lazy(() => import("./pages/Homepage"));
-const Signin = lazy(() => import("./pages/Signin"));
-const Signup = lazy(() => import("./pages/Signup"));
-const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
-const ResetPassword = lazy(() => import("./pages/ResetPassword"));
-const ListMoviesPage = lazy(() => import("./pages/ListMoviePage"));
-const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
-const OrderPage = lazy(() => import("./pages/OrderPage"));
-const PaymentPage = lazy(() => import("./pages/PaymentPage"));
-const ProfilePage = lazy(() => import("./pages/ProfilePage"));
-const OrderHistoryPage = lazy(() => import("./pages/OrderHistoryPage"));
-const TicketPage = lazy(() => import("./pages/TicketPage"));
-const ManageMoviePage = lazy(() => import("./pages/ManageMoviePage"));
-const DashboardPage = lazy(() => import("./pages/DashboardPage"));
-const ManageSchedulePage = lazy(() => import("./pages/ManageSchedulePage"));
+const Homepage = lazy(() => import('./pages/Homepage'));
+const Signin = lazy(() => import('./pages/Signin'));
+const Signup = lazy(() => import('./pages/Signup'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
+const ListMoviesPage = lazy(() => import('./pages/ListMoviePage'));
+const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage'));
+const OrderPage = lazy(() => import('./pages/OrderPage'));
+const PaymentPage = lazy(() => import('./pages/PaymentPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const OrderHistoryPage = lazy(() => import('./pages/OrderHistoryPage'));
+const TicketPage = lazy(() => import('./pages/TicketPage'));
+const ManageMoviePage = lazy(() => import('./pages/ManageMoviePage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const ManageSchedulePage = lazy(() => import('./pages/ManageSchedulePage'));
 
 function App() {
   return (

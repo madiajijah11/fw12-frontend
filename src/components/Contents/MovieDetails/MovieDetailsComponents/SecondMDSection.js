@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
-import moment from "moment";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
+import moment from 'moment';
+import { useDispatch } from 'react-redux';
 
-import { chooseMovie } from "../../../../redux/reducers/transactionReducer";
+import { chooseMovie } from '../../../../redux/reducers/transactionReducer';
 
 const SecondMovieDetailSection = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
+  const [date, setDate] = useState(moment().format('YYYY-MM-DD'));
   const [location, setLocation] = useState([]);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState('');
   const [schedule, setSchedule] = useState([]);
-  const [selectedTime, setSelectedTime] = useState("");
-  const [selectedCinema, setSelectedCinema] = useState("");
+  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedCinema, setSelectedCinema] = useState('');
 
-  const imgURL = process.env.REACT_APP_API_URL + "/assets/uploads/";
+  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
 
   useEffect(() => {
     getLocation();
@@ -29,9 +29,9 @@ const SecondMovieDetailSection = () => {
 
   const getLocation = async () => {
     const { data } = await axios.get(
-      process.env.REACT_APP_API_URL + "/movies/" + id + "/schedules/city",
+      process.env.REACT_APP_API_URL + '/movies/' + id + '/schedules/city',
       {
-        params: { date },
+        params: { date }
       }
     );
     setLocation(data.data);
@@ -42,9 +42,9 @@ const SecondMovieDetailSection = () => {
 
   const getSchedule = async (id, city, date) => {
     const { data } = await axios.get(
-      process.env.REACT_APP_API_URL + "/movies/" + id + "/schedules",
+      process.env.REACT_APP_API_URL + '/movies/' + id + '/schedules',
       {
-        params: { city, date },
+        params: { city, date }
       }
     );
     setSchedule(data.data);
@@ -61,10 +61,10 @@ const SecondMovieDetailSection = () => {
         movieId: id,
         cinemaId: selectedCinema,
         bookingDate: date,
-        bookingTime: selectedTime,
+        bookingTime: selectedTime
       })
     );
-    navigate("/order-page")
+    navigate('/order-page');
   };
 
   return (
@@ -122,7 +122,7 @@ const SecondMovieDetailSection = () => {
                             ${
                               cinema.id === selectedCinema &&
                               time === selectedTime &&
-                              "bg-[#A275E3] text-white font-bold"
+                              'bg-[#A275E3] text-white font-bold'
                             }
                           `}
                           onClick={() => selectTime(time, cinema.id)}
@@ -139,7 +139,7 @@ const SecondMovieDetailSection = () => {
                 </div>
                 <button
                   className={`w-full hover:bg-[#FA86BE] border border-[#A275E3] hover:text-white cursor-pointer text-base font-bold text-center rounded-md mt-5 py-2 ${
-                    selectedCinema !== cinema.id && "opacity-5"
+                    selectedCinema !== cinema.id && 'opacity-5'
                   }`}
                   disabled={selectedCinema !== cinema.id}
                   onClick={book}

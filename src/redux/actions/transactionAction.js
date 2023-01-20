@@ -1,16 +1,16 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 export const checkout = createAsyncThunk(
-  "transactions/checkout",
+  'transactions/checkout',
   async ({ ...transactionData }, { getState, rejectWithValue }) => {
     try {
       const { auth } = getState();
       const config = {
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`,
-        },
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${auth.token}`
+        }
       };
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}/transactions/checkout`,

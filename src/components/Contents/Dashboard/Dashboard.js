@@ -1,4 +1,4 @@
-import Graph from "../../../assets/images/graph.png";
+import Graph from '../../../assets/images/graph.png';
 
 const Dashboard = () => {
   return (
@@ -9,12 +9,7 @@ const Dashboard = () => {
             <div className="grid gap-5 w-3/4">
               <div className="text-2xl font-semibold">Form Movie</div>
               <div>
-                <img
-                  className="w-[934px] h-[434px]"
-                  src={Graph}
-                  alt="Graph"
-                  title="Graph"
-                />
+                <img className="w-[934px] h-[434px]" src={Graph} alt="Graph" title="Graph" />
               </div>
             </div>
             <div className="flex flex-col gap-5">

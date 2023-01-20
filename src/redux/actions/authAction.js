@@ -1,14 +1,14 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 export const login = createAsyncThunk(
-  "auth/login",
+  'auth/login',
   async ({ email, password, cb }, { rejectWithValue }) => {
     try {
       const config = {
         headers: {
-          "Content-Type": "application/json",
-        },
+          'Content-Type': 'application/json'
+        }
       };
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/login`,
@@ -28,16 +28,13 @@ export const login = createAsyncThunk(
 );
 
 export const register = createAsyncThunk(
-  "auth/register",
-  async (
-    { firstName, lastName, phoneNumber, email, password, cb },
-    { rejectWithValue }
-  ) => {
+  'auth/register',
+  async ({ firstName, lastName, phoneNumber, email, password, cb }, { rejectWithValue }) => {
     try {
       const config = {
         headers: {
-          "Content-Type": "application/json",
-        },
+          'Content-Type': 'application/json'
+        }
       };
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/register`,
@@ -46,7 +43,7 @@ export const register = createAsyncThunk(
           lastName,
           phoneNumber,
           email,
-          password,
+          password
         },
         config
       );

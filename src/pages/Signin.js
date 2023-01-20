@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 
-import { login } from "../redux/actions/authAction";
+import { login } from '../redux/actions/authAction';
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -10,13 +10,13 @@ const Signin = () => {
   const { error, loading } = useSelector((state) => state.auth);
 
   const [value, setValue] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: ''
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(login({ ...value, cb: () => navigate("/") }));
+    dispatch(login({ ...value, cb: () => navigate('/') }));
   };
 
   return (
@@ -42,22 +42,14 @@ const Signin = () => {
             <div className="font-thin text-gray-700">
               Sign in with your data that you entered during your registration
             </div>
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col items-center w-full gap-4"
-            >
+            <form onSubmit={handleSubmit} className="flex flex-col items-center w-full gap-4">
               <div className="w-full">
-                <label
-                  htmlFor="email"
-                  className="block text-md font-medium leading-10"
-                >
+                <label htmlFor="email" className="block text-md font-medium leading-10">
                   Email
                 </label>
                 <input
                   value={value.email}
-                  onChange={(event) =>
-                    setValue({ ...value, email: event.target.value })
-                  }
+                  onChange={(event) => setValue({ ...value, email: event.target.value })}
                   type="email"
                   placeholder="Write your email"
                   name="email"
@@ -66,17 +58,12 @@ const Signin = () => {
                 />
               </div>
               <div className="w-full">
-                <label
-                  htmlFor="password"
-                  className="block text-md font-medium leading-10"
-                >
+                <label htmlFor="password" className="block text-md font-medium leading-10">
                   Password
                 </label>
                 <input
                   value={value.password}
-                  onChange={(event) =>
-                    setValue({ ...value, password: event.target.value })
-                  }
+                  onChange={(event) => setValue({ ...value, password: event.target.value })}
                   type="password"
                   name="password"
                   placeholder="Write your password"
@@ -87,8 +74,7 @@ const Signin = () => {
               <button
                 type="submit"
                 className="bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white w-full rounded-md font-medium"
-                disabled={loading}
-              >
+                disabled={loading}>
                 Sign In
               </button>
             </form>
@@ -99,20 +85,18 @@ const Signin = () => {
             )}
             <div className="text-center">
               <div>
-                Forgot your password?{" "}
+                Forgot your password?{' '}
                 <Link
                   to="/forgot-password"
-                  className="decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]"
-                >
+                  className="decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]">
                   Reset Now
                 </Link>
               </div>
               <div>
-                Don't have an account?{" "}
+                Don&apos;t have an account?{' '}
                 <Link
                   to="/signup"
-                  className="decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]"
-                >
+                  className="decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]">
                   Sign Up
                 </Link>
               </div>

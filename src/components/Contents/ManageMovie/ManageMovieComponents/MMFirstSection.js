@@ -1,4 +1,4 @@
-import SampleImage from "../../../../assets/images/Rectangle-119.png";
+import SampleImage from '../../../../assets/images/Rectangle-119.png';
 
 const MMFirstSection = () => {
   return (
@@ -8,12 +8,7 @@ const MMFirstSection = () => {
         <div className="flex flex-col px-20 py-16 bg-[#9AEBED] rounded-lg">
           <div className="flex w-full h-full gap-8 mb-5">
             <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white h-full flex-shrink-0">
-              <img
-                className="w-40 h-60 rounded-md"
-                src={SampleImage}
-                alt="Img"
-                title="Img"
-              />
+              <img className="w-40 h-60 rounded-md" src={SampleImage} alt="Img" title="Img" />
             </div>
             <div className="w-full flex flex-col justify-between">
               <div className="flex flex-col gap-2">

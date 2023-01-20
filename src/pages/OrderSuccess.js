@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const OrderSuccess = () => {
   return (
@@ -8,12 +8,11 @@ const OrderSuccess = () => {
       <p className="mb-8">
         <span role="img" aria-label="Pensive emoji">
           💕🙂
-        </span>{" "}
+        </span>{' '}
         Thank you for your order.
       </p>
       <p>
-        You can check your order in your profile page. If you have any question,
-        please contact us.
+        You can check your order in your profile page. If you have any question, please contact us.
       </p>
       {/* Back to homepage */}
       <Link

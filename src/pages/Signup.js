@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 
-import { register } from "../redux/actions/authAction";
+import { register } from '../redux/actions/authAction';
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -10,16 +10,16 @@ const Signup = () => {
   const { error, loading } = useSelector((state) => state.auth);
 
   const [value, setValue] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    password: ''
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(register({ ...value, cb: () => navigate("/") }));
+    dispatch(register({ ...value, cb: () => navigate('/') }));
   };
 
   return (
@@ -42,25 +42,15 @@ const Signup = () => {
         <div className="flex flex-col items-center justify-center mx-8 my-8">
           <div className="w-2/3 grid gap-7">
             <div className="text-5xl font-bold">Sign Up</div>
-            <div className="font-thin text-gray-700">
-              Fill your additional details
-            </div>
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col items-center w-full gap-4"
-            >
+            <div className="font-thin text-gray-700">Fill your additional details</div>
+            <form onSubmit={handleSubmit} className="flex flex-col items-center w-full gap-4">
               <div className="w-full">
-                <label
-                  htmlFor="firstName"
-                  className="block text-md font-medium leading-10"
-                >
+                <label htmlFor="firstName" className="block text-md font-medium leading-10">
                   First Name
                 </label>
                 <input
                   value={value.firstName}
-                  onChange={(event) =>
-                    setValue({ ...value, firstName: event.target.value })
-                  }
+                  onChange={(event) => setValue({ ...value, firstName: event.target.value })}
                   type="text"
                   placeholder="Write your first name"
                   name="firstName"
@@ -69,17 +59,12 @@ const Signup = () => {
                 />
               </div>
               <div className="w-full">
-                <label
-                  htmlFor="lastName"
-                  className="block text-md font-medium leading-10"
-                >
+                <label htmlFor="lastName" className="block text-md font-medium leading-10">
                   Last Name
                 </label>
                 <input
                   value={value.lastName}
-                  onChange={(event) =>
-                    setValue({ ...value, lastName: event.target.value })
-                  }
+                  onChange={(event) => setValue({ ...value, lastName: event.target.value })}
                   type="text"
                   placeholder="Write your last name"
                   name="lastName"
@@ -88,17 +73,12 @@ const Signup = () => {
                 />
               </div>
               <div className="w-full">
-                <label
-                  htmlFor="phoneNumber"
-                  className="block text-md font-medium leading-10"
-                >
+                <label htmlFor="phoneNumber" className="block text-md font-medium leading-10">
                   Phone Number
                 </label>
                 <input
                   value={value.phoneNumber}
-                  onChange={(event) =>
-                    setValue({ ...value, phoneNumber: event.target.value })
-                  }
+                  onChange={(event) => setValue({ ...value, phoneNumber: event.target.value })}
                   type="tel"
                   placeholder="Write your phone number"
                   name="phoneNumber"
@@ -107,17 +87,12 @@ const Signup = () => {
                 />
               </div>
               <div className="w-full">
-                <label
-                  htmlFor="email"
-                  className="block text-md font-medium leading-10"
-                >
+                <label htmlFor="email" className="block text-md font-medium leading-10">
                   Email
                 </label>
                 <input
                   value={value.email}
-                  onChange={(event) =>
-                    setValue({ ...value, email: event.target.value })
-                  }
+                  onChange={(event) => setValue({ ...value, email: event.target.value })}
                   type="email"
                   placeholder="Write your email"
                   name="email"
@@ -126,17 +101,12 @@ const Signup = () => {
                 />
               </div>
               <div className="w-full">
-                <label
-                  htmlFor="password"
-                  className="block text-md font-medium leading-10"
-                >
+                <label htmlFor="password" className="block text-md font-medium leading-10">
                   Password
                 </label>
                 <input
                   value={value.password}
-                  onChange={(event) =>
-                    setValue({ ...value, password: event.target.value })
-                  }
+                  onChange={(event) => setValue({ ...value, password: event.target.value })}
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -159,7 +129,7 @@ const Signup = () => {
             )}
             <div className="text-center">
               <div>
-                Already have account?{" "}
+                Already have account?{' '}
                 <Link
                   to="/signin"
                   className="decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]"

@@ -12,10 +12,7 @@ const FourtyHomeSection = () => {
               className="py-4 px-5 mr-3 rounded border-2 border-[#DEDEDE]"
               placeholder="Type your email"
             />
-            <button
-              className="py-4 px-7 bg-[#FA86BE] text-white rounded"
-              type="submit"
-            >
+            <button className="py-4 px-7 bg-[#FA86BE] text-white rounded" type="submit">
               join now
             </button>
           </form>

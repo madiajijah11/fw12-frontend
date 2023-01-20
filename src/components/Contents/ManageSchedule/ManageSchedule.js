@@ -1,5 +1,5 @@
-import MSFirstSection from "./ManageScheduleComponents/MSFirstSection";
-import MSSecondSection from "./ManageScheduleComponents/MSSecondSection";
+import MSFirstSection from './ManageScheduleComponents/MSFirstSection';
+import MSSecondSection from './ManageScheduleComponents/MSSecondSection';
 
 const ManageSchedule = () => {
   return (

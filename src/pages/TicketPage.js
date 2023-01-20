@@ -1,6 +1,6 @@
-import Ticket from "../components/Contents/Ticket/Ticket";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Ticket from '../components/Contents/Ticket/Ticket';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 const TicketPage = () => {
   return (
