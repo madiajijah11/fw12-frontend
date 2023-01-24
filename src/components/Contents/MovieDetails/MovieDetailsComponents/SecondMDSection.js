@@ -17,8 +17,6 @@ const SecondMovieDetailSection = () => {
   const [selectedTime, setSelectedTime] = useState('');
   const [selectedCinema, setSelectedCinema] = useState('');
 
-  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
-
   useEffect(() => {
     getLocation();
   }, [id]);
@@ -103,7 +101,7 @@ const SecondMovieDetailSection = () => {
               <div className="bg-white rounded-lg p-10" key={cinema.id}>
                 <div className="grid grid-cols-2 mb-5">
                   <div className="flex flex-wrap justify-center w-full h-full content-center">
-                    <img src={imgURL + cinema.picture} alt="" />
+                    <img src={cinema.picture} alt="" />
                   </div>
                   <div>
                     <div className="font-semibold text-2xl">{cinema.name}</div>

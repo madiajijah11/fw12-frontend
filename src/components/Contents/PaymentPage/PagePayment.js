@@ -20,7 +20,6 @@ const PagePayment = () => {
   const token = useSelector((state) => state.auth.token);
   const dataTransaction = useSelector((state) => state.transaction);
   const userId = useSelector((state) => state.profile.userInfo.id);
-  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
 
   useEffect(() => {
     getPaymentList();
@@ -93,7 +92,7 @@ const PagePayment = () => {
                       key={payment.id}
                       onClick={() => setSelectedPayment(payment.id)}
                     >
-                      <img className="h-6" src={imgURL + payment.picture} alt="payment" />
+                      <img className="h-6" src={payment.picture} alt="payment" />
                     </div>
                   ))}
                 </div>

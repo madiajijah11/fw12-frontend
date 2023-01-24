@@ -21,9 +21,7 @@ const FirstMovieDetailsSection = () => {
     fetchMovie();
   }, [id]);
 
-  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
-
-  const convertDate = (date) => {
+  const convertDate = date => {
     return new Date(date).toLocaleDateString('en-GB', {
       day: 'numeric',
       month: 'long',
@@ -31,7 +29,7 @@ const FirstMovieDetailsSection = () => {
     });
   };
 
-  const convertTime = (time) => {
+  const convertTime = time => {
     const timeArray = time.split(':');
     const hour = timeArray[0].replace(/^0+/, '');
     const minute = timeArray[1].replace(/^0+/, '');
@@ -45,49 +43,49 @@ const FirstMovieDetailsSection = () => {
 
   return (
     <>
-      <div className="flex flex-row mb-20">
+      <div className='flex flex-row mb-20'>
         {isLoading ? (
           <LoadingIndicator />
         ) : (
           <>
-            <div className="h-full">
-              <div className="p-10 border w-full h-full border-[#FA86BE] rounded-lg">
+            <div className='h-full'>
+              <div className='p-10 border w-full h-full border-[#FA86BE] rounded-lg'>
                 <img
-                  className="w-[332px] h-[458px] rounded-lg"
-                  src={imgURL + movie?.picture}
+                  className='w-[332px] h-[458px] rounded-lg'
+                  src={movie?.picture}
                   alt={movie?.title}
                   title={movie?.title}
                 />
               </div>
             </div>
-            <div className="ml-8 w-2/3 flex flex-col gap-6">
-              <div className="text-4xl font-bold">{movie?.title}</div>
-              <div className="text-lg font-normal">{movie?.genre}</div>
-              <div className="flex flex-row gap-x-16">
-                <div className="grid grid-rows-2 gap-5">
+            <div className='ml-8 w-2/3 flex flex-col gap-6'>
+              <div className='text-4xl font-bold'>{movie?.title}</div>
+              <div className='text-lg font-normal'>{movie?.genre}</div>
+              <div className='flex flex-row gap-x-16'>
+                <div className='grid grid-rows-2 gap-5'>
                   <div>
-                    <div className="font-normal text-sm text-gray-400">Release Date</div>
+                    <div className='font-normal text-sm '>Release Date</div>
                     <div>{convertDate(movie?.releaseDate)}</div>
                   </div>
                   <div>
-                    <div className="font-normal text-sm text-gray-400">Duration</div>
+                    <div className='font-normal text-sm '>Duration</div>
                     <div>{convertTime(movie?.duration)}</div>
                   </div>
                 </div>
-                <div className="grid grid-rows-2 gap-5">
+                <div className='grid grid-rows-2 gap-5'>
                   <div>
-                    <div className="font-normal text-sm text-gray-400">Director</div>
+                    <div className='font-normal text-sm '>Director</div>
                     <div>{movie?.director}</div>
                   </div>
                   <div>
-                    <div className="font-normal text-sm text-gray-400">Casts</div>
+                    <div className='font-normal text-sm '>Casts</div>
                     {/* give ... at the end of mapping */}
-                    <div className="flex flex-row gap-1">
+                    <div className='flex flex-row gap-1'>
                       {castArray3?.map((cast, index) => {
                         return index === castArray3.length - 1 ? (
                           <div key={index}>
                             {cast}
-                            <span className="text-gray-400">...</span>
+                            <span className=''>...</span>
                           </div>
                         ) : (
                           <div key={index}>{cast},</div>
@@ -99,8 +97,8 @@ const FirstMovieDetailsSection = () => {
               </div>
               <hr />
               <div>
-                <div className="font-semibold text-xl mb-2">Synopsis</div>
-                <div className="text-justify font-normal text-base leading-8">
+                <div className='font-semibold text-xl mb-2'>Synopsis</div>
+                <div className='text-justify font-normal text-base leading-8'>
                   {movie?.synopsis}
                 </div>
               </div>

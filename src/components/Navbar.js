@@ -56,7 +56,7 @@ const Navbar = () => {
                   </div>
                   <img
                     className="rounded-full w-12 h-12 mr-2"
-                    src={userInfo?.picture ? imgURL + userInfo?.picture : imgURL + 'user.jpg'}
+                    src={userInfo?.picture ? userInfo?.picture : imgURL + 'user.jpg'}
                     alt="profile"
                     title="profile"
                   />

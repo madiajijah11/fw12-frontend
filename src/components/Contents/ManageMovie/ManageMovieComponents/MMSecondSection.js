@@ -8,7 +8,6 @@ const MMSecondSection = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
-  const imgURL = process.env.REACT_APP_API_URL + '/assets/uploads/';
 
   const fetchMovies = async () => {
     const response = await axios.get(process.env.REACT_APP_API_URL + '/movies?limit=8&page=1');
@@ -49,7 +48,7 @@ const MMSecondSection = () => {
                 <div className="flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white w-full h-full">
                   <img
                     className="w-40 h-60 rounded-md"
-                    src={imgURL + movie.picture}
+                    src={movie.picture}
                     alt={movie.title}
                     title={movie.title}
                   />

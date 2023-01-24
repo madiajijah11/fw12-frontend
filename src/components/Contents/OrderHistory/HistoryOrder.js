@@ -49,7 +49,8 @@ const HistoryOrder = () => {
                 onSubmit={() => {
                   dispatch(logout());
                 }}
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]">
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#FA86BE] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-[#A275E3]"
+              >
                 Logout
               </button>
             </div>
@@ -69,7 +70,8 @@ const HistoryOrder = () => {
               return (
                 <div
                   className="px-8 py-10 flex flex-col bg-white rounded-lg gap-4"
-                  key={transHis.id}>
+                  key={transHis.id}
+                >
                   <div className="grid gap-4">
                     <div className="flex justify-between">
                       <div>
@@ -80,7 +82,7 @@ const HistoryOrder = () => {
                       </div>
                       <div>
                         <img
-                          src={imgURL + transHis?.cinemaPicture}
+                          src={transHis?.cinemaPicture}
                           alt={transHis?.cinemaName}
                           title={transHis?.cinemaName}
                         />

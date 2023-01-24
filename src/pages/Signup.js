@@ -1,37 +1,73 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import YupPassword from 'yup-password';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import http from '../helpers/http';
 
-import { register } from '../redux/actions/authAction';
+import { setToken } from '../redux/reducers/authReducer';
+
+YupPassword(Yup);
+
+const registerSchema = Yup.object().shape({
+  firstName: Yup.string().required('First name is required'),
+  lastName: Yup.string().required('Last name is required'),
+  phoneNumber: Yup.string().required('Phone number is required'),
+  email: Yup.string().email().required('Email is required'),
+  password: Yup.string()
+    .required('Password is required')
+    .minLowercase(1)
+    .minUppercase(1)
+    .minNumbers(1)
+    .minSymbols(1)
+    .min(6)
+});
 
 const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error, loading } = useSelector((state) => state.auth);
+  const [error, setError] = useState('');
 
-  const [value, setValue] = useState({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    email: '',
-    password: ''
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting, isDirty }
+  } = useForm({
+    mode: 'all',
+    resolver: yupResolver(registerSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      password: ''
+    }
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(register({ ...value, cb: () => navigate('/') }));
-  };
+  async function onSubmit (values) {
+    try {
+      const { data } = await http().post('/api/v1/auth/register', values);
+      if (data.status !== false) {
+        dispatch(setToken(data.token));
+        navigate('/');
+      }
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+  }
 
   return (
     <>
-      <div className="grid sm:grid-cols-[2fr,1.3fr] h-screen">
+      <div className='grid sm:grid-cols-[2fr,1.3fr] h-screen'>
         <div className="hidden sm:block bg-[url('../images/background.png')] bg-cover bg-center bg-no-repeat w-full h-full relative">
           <div>
-            <div className="absolute top-0 left-0 w-full h-full bg-[#FA86BE] opacity-80">
-              <div className="flex items-center justify-center h-full w-11/12">
-                <div className="text-center">
-                  <h1 className="text-7xl text-white font-bold">MexL Cinema</h1>
-                  <p className="text-5xl text-white font-thin">
+            <div className='absolute top-0 left-0 w-full h-full bg-[#FA86BE] opacity-80'>
+              <div className='flex items-center justify-center h-full w-11/12'>
+                <div className='text-center'>
+                  <h1 className='text-7xl text-white font-bold'>MexL Cinema</h1>
+                  <p className='text-5xl text-white font-thin'>
                     The best place to buy movies tickets
                   </p>
                 </div>
@@ -39,101 +75,126 @@ const Signup = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center mx-8 my-8">
-          <div className="w-2/3 grid gap-7">
-            <div className="text-5xl font-bold">Sign Up</div>
-            <div className="font-thin text-gray-700">Fill your additional details</div>
-            <form onSubmit={handleSubmit} className="flex flex-col items-center w-full gap-4">
-              <div className="w-full">
-                <label htmlFor="firstName" className="block text-md font-medium leading-10">
+        <div className='flex flex-col items-center justify-center mx-8 my-8'>
+          <div className='w-2/3 grid gap-7'>
+            <div className='text-5xl font-bold'>Sign Up</div>
+            <div className='font-thin'>Fill your additional details</div>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className='flex flex-col items-center w-full gap-4'>
+              <div className='w-full'>
+                <label htmlFor='firstName' className='block text-md font-medium leading-10'>
                   First Name
                 </label>
                 <input
-                  value={value.firstName}
-                  onChange={(event) => setValue({ ...value, firstName: event.target.value })}
-                  type="text"
-                  placeholder="Write your first name"
-                  name="firstName"
-                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  type='text'
+                  placeholder='Write your first name'
+                  name='firstName'
+                  className='input w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent'
                   required
+                  disabled={isSubmitting}
+                  {...register('firstName')}
                 />
+                {errors.firstName && (
+                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
+                    {errors.firstName.message}
+                  </div>
+                )}
               </div>
-              <div className="w-full">
-                <label htmlFor="lastName" className="block text-md font-medium leading-10">
+              <div className='w-full'>
+                <label htmlFor='lastName' className='block text-md font-medium leading-10'>
                   Last Name
                 </label>
                 <input
-                  value={value.lastName}
-                  onChange={(event) => setValue({ ...value, lastName: event.target.value })}
-                  type="text"
-                  placeholder="Write your last name"
-                  name="lastName"
-                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  type='text'
+                  placeholder='Write your last name'
+                  name='lastName'
+                  className='input w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent'
                   required
+                  disabled={isSubmitting}
+                  {...register('lastName')}
                 />
+                {errors.lastName && (
+                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
+                    {errors.lastName.message}
+                  </div>
+                )}
               </div>
-              <div className="w-full">
-                <label htmlFor="phoneNumber" className="block text-md font-medium leading-10">
+              <div className='w-full'>
+                <label htmlFor='phoneNumber' className='block text-md font-medium leading-10'>
                   Phone Number
                 </label>
                 <input
-                  value={value.phoneNumber}
-                  onChange={(event) => setValue({ ...value, phoneNumber: event.target.value })}
-                  type="tel"
-                  placeholder="Write your phone number"
-                  name="phoneNumber"
-                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  type='tel'
+                  placeholder='Write your phone number'
+                  name='phoneNumber'
+                  className='input w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent'
                   required
+                  disabled={isSubmitting}
+                  {...register('phoneNumber')}
                 />
+                {errors.phoneNumber && (
+                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
+                    {errors.phoneNumber.message}
+                  </div>
+                )}
               </div>
-              <div className="w-full">
-                <label htmlFor="email" className="block text-md font-medium leading-10">
+              <div className='w-full'>
+                <label htmlFor='email' className='block text-md font-medium leading-10'>
                   Email
                 </label>
                 <input
-                  value={value.email}
-                  onChange={(event) => setValue({ ...value, email: event.target.value })}
-                  type="email"
-                  placeholder="Write your email"
-                  name="email"
-                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  type='email'
+                  placeholder='Write your email'
+                  name='email'
+                  className='input w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent'
                   required
+                  disabled={isSubmitting}
+                  {...register('email')}
                 />
+                {errors.email && (
+                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
+                    {errors.email.message}
+                  </div>
+                )}
               </div>
-              <div className="w-full">
-                <label htmlFor="password" className="block text-md font-medium leading-10">
+              <div className='w-full'>
+                <label htmlFor='password' className='block text-md font-medium leading-10'>
                   Password
                 </label>
                 <input
-                  value={value.password}
-                  onChange={(event) => setValue({ ...value, password: event.target.value })}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent"
+                  type='password'
+                  name='password'
+                  placeholder='Password'
+                  className='input w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent'
                   required
+                  disabled={isSubmitting}
+                  {...register('password')}
                 />
+                {errors.password && (
+                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
+                    {errors.password.message}
+                  </div>
+                )}
               </div>
               <button
-                type="submit"
-                className="bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white w-full rounded-md font-medium"
-                disabled={loading}
-              >
+                type='submit'
+                className='btn bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white w-full rounded-md font-medium'
+                disabled={!isDirty || isSubmitting}>
                 Sign Up
               </button>
             </form>
             {error && (
-              <div className="text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md">
+              <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md'>
                 {error}
               </div>
             )}
-            <div className="text-center">
+            <div className='text-center'>
               <div>
                 Already have account?{' '}
                 <Link
-                  to="/signin"
-                  className="decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]"
-                >
+                  to='/signin'
+                  className='decoration-[#FA86BE] underline underline-offset-2 font-medium text-[#FA86BE]'>
                   Sign In
                 </Link>
               </div>
