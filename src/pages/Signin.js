@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import http from '../helpers/http';
 import { useState } from 'react';
+import { Icon } from '@iconify-icon/react';
 
 import { setToken } from '../redux/reducers/authReducer';
 
@@ -20,6 +21,7 @@ const Signin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -85,18 +87,18 @@ const Signin = () => {
                   disabled={isSubmitting}
                   {...register('email')}
                 />
-                {errors.email && (
-                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
-                    {errors.email.message}
-                  </div>
-                )}
               </div>
-              <div className='w-full'>
+              {errors.email && (
+                <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1 w-full'>
+                  {errors.email.message}
+                </div>
+              )}
+              <div className='w-full relative'>
                 <label htmlFor='password' className='block text-md font-medium leading-10'>
                   Password
                 </label>
                 <input
-                  type='password'
+                  type={showPassword ? 'text' : 'password'}
                   name='password'
                   placeholder='Write your password'
                   className='input w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent'
@@ -104,12 +106,19 @@ const Signin = () => {
                   disabled={isSubmitting}
                   {...register('password')}
                 />
-                {errors.password && (
-                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
-                    {errors.password.message}
-                  </div>
-                )}
+                <Icon
+                  icon={showPassword ? 'bi:eye-slash-fill' : 'bi:eye-fill'}
+                  className='absolute text-[#A275E3] cursor-pointer right-4 bottom-3'
+                  width={25}
+                  height={25}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
               </div>
+              {errors.password && (
+                <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1 w-full'>
+                  {errors.password.message}
+                </div>
+              )}
               <button
                 type='submit'
                 className='btn bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white w-full rounded-md font-medium'

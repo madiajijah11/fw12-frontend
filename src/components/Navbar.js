@@ -40,15 +40,19 @@ const Navbar = () => {
               <Link to='/list-movie' className='text-base font-medium'>
                 Movie List
               </Link>
-              <Link to='/admin/dashboard' className='text-base font-medium'>
-                Dashboard
-              </Link>
-              <Link to='/admin/manage-movie' className='text-base font-medium'>
-                Manage Movie
-              </Link>
-              <Link to='/admin/manage-schedule' className='text-base font-medium'>
-                Manage Schedule
-              </Link>
+              {userInfo?.isAdmin === 'true' && (
+                <>
+                  <Link to='/admin/dashboard' className='text-base font-medium'>
+                    Dashboard
+                  </Link>
+                  <Link to='/admin/manage-movie' className='text-base font-medium'>
+                    Manage Movie
+                  </Link>
+                  <Link to='/admin/manage-schedule' className='text-base font-medium'>
+                    Manage Schedule
+                  </Link>
+                </>
+              )}
             </nav>
             <div className='items-center justify-end md:flex md:flex-1 lg:w-0 pr-3'>
               {token ? (

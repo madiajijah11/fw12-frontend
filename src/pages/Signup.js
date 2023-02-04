@@ -6,6 +6,7 @@ import YupPassword from 'yup-password';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import http from '../helpers/http';
+import { Icon } from '@iconify-icon/react';
 
 import { setToken } from '../redux/reducers/authReducer';
 
@@ -29,6 +30,7 @@ const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -95,12 +97,12 @@ const Signup = () => {
                   disabled={isSubmitting}
                   {...register('firstName')}
                 />
-                {errors.firstName && (
-                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
-                    {errors.firstName.message}
-                  </div>
-                )}
               </div>
+              {errors.firstName && (
+                <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1 w-full'>
+                  {errors.firstName.message}
+                </div>
+              )}
               <div className='w-full'>
                 <label htmlFor='lastName' className='block text-md font-medium leading-10'>
                   Last Name
@@ -114,12 +116,12 @@ const Signup = () => {
                   disabled={isSubmitting}
                   {...register('lastName')}
                 />
-                {errors.lastName && (
-                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
-                    {errors.lastName.message}
-                  </div>
-                )}
               </div>
+              {errors.lastName && (
+                <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1 w-full'>
+                  {errors.lastName.message}
+                </div>
+              )}
               <div className='w-full'>
                 <label htmlFor='phoneNumber' className='block text-md font-medium leading-10'>
                   Phone Number
@@ -133,12 +135,12 @@ const Signup = () => {
                   disabled={isSubmitting}
                   {...register('phoneNumber')}
                 />
-                {errors.phoneNumber && (
-                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
-                    {errors.phoneNumber.message}
-                  </div>
-                )}
               </div>
+              {errors.phoneNumber && (
+                <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1 w-full'>
+                  {errors.phoneNumber.message}
+                </div>
+              )}
               <div className='w-full'>
                 <label htmlFor='email' className='block text-md font-medium leading-10'>
                   Email
@@ -152,18 +154,18 @@ const Signup = () => {
                   disabled={isSubmitting}
                   {...register('email')}
                 />
-                {errors.email && (
-                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
-                    {errors.email.message}
-                  </div>
-                )}
               </div>
-              <div className='w-full'>
+              {errors.email && (
+                <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1 w-full'>
+                  {errors.email.message}
+                </div>
+              )}
+              <div className='w-full relative'>
                 <label htmlFor='password' className='block text-md font-medium leading-10'>
                   Password
                 </label>
                 <input
-                  type='password'
+                  type={showPassword ? 'text' : 'password'}
                   name='password'
                   placeholder='Password'
                   className='input w-full px-4 py-2 border border-[#FA86BE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#A275E3] focus:border-transparent'
@@ -171,12 +173,19 @@ const Signup = () => {
                   disabled={isSubmitting}
                   {...register('password')}
                 />
-                {errors.password && (
-                  <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1'>
-                    {errors.password.message}
-                  </div>
-                )}
+                <Icon
+                  icon={showPassword ? 'bi:eye-slash-fill' : 'bi:eye-fill'}
+                  className='absolute text-[#A275E3] cursor-pointer right-4 bottom-3'
+                  width={25}
+                  height={25}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
               </div>
+              {errors.password && (
+                <div className='text-center border border-[#FA86BE] text-red-500 font-medium p-2 rounded-md mt-1 w-full'>
+                  {errors.password.message}
+                </div>
+              )}
               <button
                 type='submit'
                 className='btn bg-[#FA86BE] hover:bg-[#A275E3] py-2 px-4 text-medium text-white w-full rounded-md font-medium'
