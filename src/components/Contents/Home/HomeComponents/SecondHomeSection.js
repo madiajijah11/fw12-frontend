@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import http from '../../../../helpers/http';
-import LoadingIndicator from '../../../LoadingIndicator';
+// import LoadingIndicator from '../../../LoadingIndicator';
 import { useQuery } from '@tanstack/react-query';
+import { Skeleton, SkeletonText } from '@chakra-ui/react';
 
 const SecondHomeSection = () => {
   const { data, isLoading, error } = useQuery({
@@ -23,7 +24,6 @@ const SecondHomeSection = () => {
               <Link to='/list-movie'>View All</Link>
             </div>
           </div>
-          {isLoading && <LoadingIndicator />}
           {error && (
             <div className='alert alert-error shadow-lg'>
               <div>
@@ -44,6 +44,110 @@ const SecondHomeSection = () => {
             </div>
           )}
           <div className='flex gap-8 mt-8 px-8 overflow-x-auto place-content-between'>
+            {isLoading && (
+              <>
+                <div className='relative group flex-shrink-0'>
+                  <div className='flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white hover:border-[#A275E3] w-full'>
+                    <Skeleton>
+                      <img className='w-40 h-60 rounded-md' src={null} alt={null} title={null} />
+                    </Skeleton>
+                    <div className='top-2/4 hidden group-hover:flex flex-col gap-2'>
+                      <div className='text-2x1 font-semibold w-[130px] mt-2'>
+                        <SkeletonText noOfLines={1} spacing='4' />
+                      </div>
+                      <div className='flex flex-row'>
+                        <div className='text-sm w-[130px]'>
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                        </div>
+                      </div>
+                      <SkeletonText noOfLines={1} spacing='4' />
+                    </div>
+                  </div>
+                </div>
+                <div className='relative group flex-shrink-0'>
+                  <div className='flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white hover:border-[#A275E3] w-full'>
+                    <Skeleton>
+                      <img className='w-40 h-60 rounded-md' src={null} alt={null} title={null} />
+                    </Skeleton>
+                    <div className='top-2/4 hidden group-hover:flex flex-col gap-2'>
+                      <div className='text-2x1 font-semibold w-[130px] mt-2'>
+                        <SkeletonText noOfLines={1} spacing='4' />
+                      </div>
+                      <div className='flex flex-row'>
+                        <div className='text-sm w-[130px]'>
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                        </div>
+                      </div>
+                      <SkeletonText noOfLines={1} spacing='4' />
+                    </div>
+                  </div>
+                </div>
+                <div className='relative group flex-shrink-0'>
+                  <div className='flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white hover:border-[#A275E3] w-full'>
+                    <Skeleton>
+                      <img className='w-40 h-60 rounded-md' src={null} alt={null} title={null} />
+                    </Skeleton>
+                    <div className='top-2/4 hidden group-hover:flex flex-col gap-2'>
+                      <div className='text-2x1 font-semibold w-[130px] mt-2'>
+                        <SkeletonText noOfLines={1} spacing='4' />
+                      </div>
+                      <div className='flex flex-row'>
+                        <div className='text-sm w-[130px]'>
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                        </div>
+                      </div>
+                      <SkeletonText noOfLines={1} spacing='4' />
+                    </div>
+                  </div>
+                </div>
+                <div className='relative group flex-shrink-0'>
+                  <div className='flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white hover:border-[#A275E3] w-full'>
+                    <Skeleton>
+                      <img className='w-40 h-60 rounded-md' src={null} alt={null} title={null} />
+                    </Skeleton>
+                    <div className='top-2/4 hidden group-hover:flex flex-col gap-2'>
+                      <div className='text-2x1 font-semibold w-[130px] mt-2'>
+                        <SkeletonText noOfLines={1} spacing='4' />
+                      </div>
+                      <div className='flex flex-row'>
+                        <div className='text-sm w-[130px]'>
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                        </div>
+                      </div>
+                      <SkeletonText noOfLines={1} spacing='4' />
+                    </div>
+                  </div>
+                </div>
+                <div className='relative group flex-shrink-0'>
+                  <div className='flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white hover:border-[#A275E3] w-full'>
+                    <Skeleton>
+                      <img className='w-40 h-60 rounded-md' src={null} alt={null} title={null} />
+                    </Skeleton>
+                    <div className='top-2/4 hidden group-hover:flex flex-col gap-2'>
+                      <div className='text-2x1 font-semibold w-[130px] mt-2'>
+                        <SkeletonText noOfLines={1} spacing='4' />
+                      </div>
+                      <div className='flex flex-row'>
+                        <div className='text-sm w-[130px]'>
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                          <SkeletonText noOfLines={1} spacing='4' />
+                        </div>
+                      </div>
+                      <SkeletonText noOfLines={1} spacing='4' />
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
             {data?.map(movie => (
               <div className='relative group flex-shrink-0' key={movie.id}>
                 <div className='flex flex-col p-8 border-2 items-center rounded-lg border-[#FA86BE] text-center hover:bg-white hover:border-[#A275E3] w-full'>

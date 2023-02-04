@@ -11,13 +11,20 @@ const initialState = {
 const profileSlice = createSlice({
   name: 'profile',
   initialState,
-  reducers: {},
-  extraReducers: (build) => {
+  reducers: {
+    clearProfile: (state, action) => {
+      state.userInfo = null;
+      state.loading = false;
+      state.error = null;
+      state.success = false;
+    }
+  },
+  extraReducers: build => {
     build.addCase(getProfile.pending, (state, action) => {
       state.loading = true;
     });
     build.addCase(getProfile.fulfilled, (state, action) => {
-      state.userInfo = action.payload.data;
+      state.userInfo = action.payload;
       state.loading = false;
       state.error = null;
     });
@@ -27,5 +34,7 @@ const profileSlice = createSlice({
     });
   }
 });
+
+export const { clearProfile } = profileSlice.actions;
 
 export default profileSlice.reducer;

@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import { store, persistor } from './redux/store';
 
@@ -20,7 +21,9 @@ root.render(
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <BrowserRouter>
-            <App />
+            <ChakraProvider>
+              <App />
+            </ChakraProvider>
           </BrowserRouter>
         </PersistGate>
       </Provider>

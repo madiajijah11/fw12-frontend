@@ -23,14 +23,14 @@ const ManageMoviePage = lazy(() => import('./pages/ManageMoviePage'));
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 const ManageSchedulePage = lazy(() => import('./pages/ManageSchedulePage'));
 
-function App() {
+function App () {
   return (
     <Routes>
-      <Route path="/order-success" element={<OrderSuccess />} />
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path='/order-success' element={<OrderSuccess />} />
+      <Route path='*' element={<NotFoundPage />} />
       <Route
         index
-        path="/"
+        path='/'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <Homepage />
@@ -38,7 +38,7 @@ function App() {
         }
       />
       <Route
-        path="/signin"
+        path='/signin'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <NotLoggedInRoute>
@@ -48,7 +48,7 @@ function App() {
         }
       />
       <Route
-        path="/signup"
+        path='/signup'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <NotLoggedInRoute>
@@ -58,7 +58,7 @@ function App() {
         }
       />
       <Route
-        path="/forgot-password"
+        path='/forgot-password'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <NotLoggedInRoute>
@@ -68,7 +68,7 @@ function App() {
         }
       />
       <Route
-        path="/reset-password"
+        path='/reset-password'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <NotLoggedInRoute>
@@ -78,7 +78,7 @@ function App() {
         }
       />
       <Route
-        path="/list-movie"
+        path='/list-movie'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <ListMoviesPage />
@@ -86,7 +86,7 @@ function App() {
         }
       />
       <Route
-        path="/movie-details/:id"
+        path='/movie-details/:id'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <MovieDetailsPage />
@@ -94,7 +94,7 @@ function App() {
         }
       />
       <Route
-        path="/order-page"
+        path='/order-page'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <LoggedInRoute>
@@ -104,7 +104,7 @@ function App() {
         }
       />
       <Route
-        path="/payment-page"
+        path='/payment-page'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <LoggedInRoute>
@@ -114,7 +114,7 @@ function App() {
         }
       />
       <Route
-        path="/profile"
+        path='/profile'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <LoggedInRoute>
@@ -124,7 +124,7 @@ function App() {
         }
       />
       <Route
-        path="/order-history"
+        path='/order-history'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <LoggedInRoute>
@@ -134,7 +134,7 @@ function App() {
         }
       />
       <Route
-        path="/ticket"
+        path='/ticket'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <LoggedInRoute>
@@ -144,7 +144,7 @@ function App() {
         }
       />
       <Route
-        path="/admin/manage-movie"
+        path='/admin/manage-movie'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <LoggedInRoute>
@@ -154,7 +154,7 @@ function App() {
         }
       />
       <Route
-        path="/admin/dashboard"
+        path='/admin/dashboard'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <LoggedInRoute>
@@ -164,7 +164,7 @@ function App() {
         }
       />
       <Route
-        path="/admin/manage-schedule"
+        path='/admin/manage-schedule'
         element={
           <Suspense fallback={<PageLoadingIndicator />}>
             <LoggedInRoute>

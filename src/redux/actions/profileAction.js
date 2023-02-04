@@ -1,18 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import http from '../../helpers/http';
 
 export const getProfile = createAsyncThunk(
   'profile/getProfile',
   async (arg, { getState, rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      const config = {
-        headers: {
-          Authorization: `Bearer ${auth.token}`
-        }
-      };
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/profile`, config);
-      return data;
+      const { token } = getState().auth;
+      const { data } = await http(token).get(`${process.env.REACT_APP_API_URL}/api/v1/profile`);
+      return data.results;
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
